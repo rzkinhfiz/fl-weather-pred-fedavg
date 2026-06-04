@@ -1,0 +1,345 @@
+# =============================================================================
+# fl-server.yaml - Kubernetes Deployment for Flower Central Server
+# =============================================================================
+# Central aggregator for Federated Learning (Flower v1.8+)
+# Lightweight image (python:3.10-slim, NO PyTorch)
+# Resource limits: 200m CPU / 256Mi Memory (GCP e2-micro compatible)
+# =============================================================================
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: flower-fl
+  labels:
+    name: flower-fl
+
+---
+# =============================================================================
+# ConfigMap: Server Configuration
+# =============================================================================
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: fl-server-config
+  namespace: flower-fl
+data:
+  # Number of FL rounds
+  NUM_ROUNDS: "10"
+  # Minimum clients per round
+  MIN_FIT_CLIENTS: "3"
+  # Minimum clients available for evaluation
+  MIN_AVAILABLE_CLIENTS: "3"
+  # Log level
+  LOG_LEVEL: "INFO"
+  # Server address (internal K8s DNS)
+  SERVER_ADDRESS: "0.0.0.0"
+  # Server port
+  SERVER_PORT: "8080"
+
+---
+# =============================================================================
+# Deployment: Flower Central Server
+# =============================================================================
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fl-server
+  namespace: flower-fl
+  labels:
+    app: flower
+    component: server
+    version: v1
+spec:
+  # Single replica (central server)
+  replicas: 1
+  
+  selector:
+    matchLabels:
+      app: flower
+      component: server
+  
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 0
+      maxUnavailable: 0
+  
+  template:
+    metadata:
+      labels:
+        app: flower
+        component: server
+        version: v1
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "8080"
+    
+    spec:
+      # Pod scheduling
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 100
+              podAffinityTerm:
+                labelSelector:
+                  matchExpressions:
+                    - key: component
+                      operator: In
+                      values:
+                        - client
+                topologyKey: kubernetes.io/hostname
+      
+      # Service account
+      serviceAccountName: fl-server
+      
+      # Container security context
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        fsGroup: 1000
+      
+      # Containers
+      containers:
+        - name: server
+          
+          # Image (lightweight, no PyTorch)
+          image: fl-weather-server:latest
+          imagePullPolicy: IfNotPresent
+          
+          # Environment variables from ConfigMap
+          envFrom:
+            - configMapRef:
+                name: fl-server-config
+          
+          # Additional environment variables
+          env:
+            - name: PYTHONUNBUFFERED
+              value: "1"
+            - name: PYTHONDONTWRITEBYTECODE
+              value: "1"
+          
+          # Container ports
+          ports:
+            - name: grpc
+              containerPort: 8080
+              protocol: TCP
+          
+          # Resource requests & limits
+          # GCP e2-micro compatible
+          resources:
+            requests:
+              cpu: 100m           # 0.1 CPU
+              memory: 128Mi       # 128MB
+            limits:
+              cpu: 200m           # 0.2 CPU
+              memory: 256Mi       # 256MB
+          
+          # Probes for health checking
+          livenessProbe:
+            tcpSocket:
+              port: grpc
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 3
+          
+          readinessProbe:
+            tcpSocket:
+              port: grpc
+            initialDelaySeconds: 10
+            periodSeconds: 5
+            timeoutSeconds: 3
+            failureThreshold: 2
+          
+          # Volume mounts
+          volumeMounts:
+            - name: logs
+              mountPath: /app/logs
+              readOnly: false
+          
+          # Security context per container
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: false
+            runAsNonRoot: true
+            runAsUser: 1000
+            capabilities:
+              drop:
+                - ALL
+          
+          # Startup probe (K8s 1.18+)
+          startupProbe:
+            tcpSocket:
+              port: grpc
+            initialDelaySeconds: 0
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 30
+      
+      # Volumes
+      volumes:
+        - name: logs
+          emptyDir: {}
+      
+      # Restart policy
+      restartPolicy: Always
+      
+      # Termination grace period
+      terminationGracePeriodSeconds: 30
+      
+      # DNS policy for inter-pod communication
+      dnsPolicy: ClusterFirst
+
+---
+# =============================================================================
+# Service: Expose Server (gRPC port 8080)
+# =============================================================================
+apiVersion: v1
+kind: Service
+metadata:
+  name: fl-server
+  namespace: flower-fl
+  labels:
+    app: flower
+    component: server
+  annotations:
+    description: "Flower Central Server - gRPC endpoint"
+spec:
+  # Service type: LoadBalancer for external access (gRPC clients from outside cluster)
+  # Alternative: use NodePort if LoadBalancer is not available
+  # For GCP: LoadBalancer creates external IP automatically
+  type: LoadBalancer
+  
+  # Alternative service types:
+  # type: NodePort  # Expose via node port (e.g., localhost:31000)
+  # type: ClusterIP # Internal-only (default)
+  
+  selector:
+    app: flower
+    component: server
+  
+  ports:
+    - name: grpc
+      protocol: TCP
+      port: 8080           # External port (accessed by clients)
+      targetPort: 8080     # Pod port
+      # For NodePort, you can specify nodePort (optional)
+      # nodePort: 31000    # 30000-32767 range
+  
+  # For LoadBalancer: allocate external IP
+  # For NodePort: accessible via <node-ip>:<node-port>
+  # For ClusterIP: accessible via <service-name>.<namespace>.svc.cluster.local
+  
+  # Session affinity (optional, for debugging)
+  sessionAffinity: None
+  # sessionAffinity: ClientIP
+  # sessionAffinityConfig:
+  #   clientIP:
+  #     timeoutSeconds: 10800
+
+---
+# =============================================================================
+# ServiceAccount: Server Pod Identity
+# =============================================================================
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: fl-server
+  namespace: flower-fl
+  labels:
+    app: flower
+    component: server
+
+---
+# =============================================================================
+# Role: Server Permissions
+# =============================================================================
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: fl-server
+  namespace: flower-fl
+  labels:
+    app: flower
+    component: server
+rules:
+  # Allow server to read ConfigMaps
+  - apiGroups: [""]
+    resources: ["configmaps"]
+    verbs: ["get", "list", "watch"]
+  
+  # Allow server to read Secrets (if needed)
+  - apiGroups: [""]
+    resources: ["secrets"]
+    verbs: ["get"]
+  
+  # Allow server to write logs/events
+  - apiGroups: [""]
+    resources: ["events"]
+    verbs: ["create", "patch"]
+
+---
+# =============================================================================
+# RoleBinding: Bind Role to ServiceAccount
+# =============================================================================
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: fl-server
+  namespace: flower-fl
+  labels:
+    app: flower
+    component: server
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: fl-server
+subjects:
+  - kind: ServiceAccount
+    name: fl-server
+    namespace: flower-fl
+
+---
+# =============================================================================
+# PodDisruptionBudget: Prevent accidental server termination
+# =============================================================================
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: fl-server-pdb
+  namespace: flower-fl
+  labels:
+    app: flower
+    component: server
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app: flower
+      component: server
+
+# =============================================================================
+# DEPLOYMENT COMMANDS:
+# =============================================================================
+# kubectl apply -f fl-server.yaml
+#
+# Check deployment:
+# kubectl get deployment -n flower-fl
+# kubectl get pods -n flower-fl
+# kubectl get svc -n flower-fl
+#
+# Get server external IP (for clients to connect):
+# kubectl get svc fl-server -n flower-fl -o wide
+# 
+# View logs:
+# kubectl logs -f deployment/fl-server -n flower-fl
+#
+# Describe pod:
+# kubectl describe pod -n flower-fl -l component=server
+#
+# Port-forward for local testing:
+# kubectl port-forward -n flower-fl svc/fl-server 8080:8080
+#
+# Delete:
+# kubectl delete -f fl-server.yaml
+# =============================================================================

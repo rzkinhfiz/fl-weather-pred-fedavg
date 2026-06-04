@@ -11,6 +11,7 @@
 7. [Monitoring & Troubleshooting](#monitoring--troubleshooting)
 8. [Optimisasi Memory](#optimisasi-memory)
 9. [Deployment GCP](#deployment-gcp)
+10. [Alternative: Kubernetes Deployment](#️-alternative-kubernetes-deployment)
 
 ---
 
@@ -582,6 +583,47 @@ docker stats
 docker compose down -v
 docker image prune -a
 ```
+
+---
+
+## ☸️ Alternative: Kubernetes Deployment
+
+Jika memerlukan deployment yang lebih **scalable** atau **multi-node**, pertimbangkan gunakan **Kubernetes**:
+
+### Kelebihan Kubernetes vs Docker Compose
+
+| Aspek | Docker Compose | Kubernetes |
+|-------|---|---|
+| Single Machine | ✅ Optimal | ⚠️ Overkill |
+| Multi-Node | ❌ | ✅ Optimal |
+| Cloud Native | ⚠️ | ✅ Native |
+| RBAC & Security | ⚠️ | ✅ Built-in |
+| High Availability | ❌ | ✅ Auto-recovery |
+| Scaling | Manual | Automatic (HPA) |
+| Setup Complexity | Low | Medium |
+
+### Quick Start dengan Kubernetes
+
+```bash
+# Automated deployment ke Minikube (local)
+bash setup-k8s.sh minikube
+
+# Atau ke GCP
+bash setup-k8s.sh gcp
+
+# Monitor training
+kubectl logs -f deployment/fl-server -n flower-fl
+```
+
+### File-file Kubernetes Tersedia
+
+- ✅ `fl-server.yaml` - Server deployment
+- ✅ `fl-clients.yaml` - 15 client pods
+- ✅ `generate-fl-clients.sh` - Auto-generate semua clients
+- ✅ `setup-k8s.sh` - Automation script
+- ✅ [KUBERNETES_DEPLOYMENT_GUIDE.md](KUBERNETES_DEPLOYMENT_GUIDE.md) - Complete guide (300+ lines)
+
+📖 **Untuk lebih detail**: Baca [KUBERNETES_DEPLOYMENT_GUIDE.md](KUBERNETES_DEPLOYMENT_GUIDE.md)
 
 ---
 

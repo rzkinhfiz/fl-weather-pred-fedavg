@@ -366,10 +366,34 @@ docker run -d \
 
 ## 📞 Support & Documentation
 
-- **Full Setup Guide**: `DOCKER_SETUP.md`
+- **Full Docker Setup Guide**: `DOCKER_SETUP.md`
+- **Kubernetes Deployment** (for multi-node/production): `KUBERNETES_DEPLOYMENT_GUIDE.md`
 - **Flower Framework**: https://flower.ai/docs
 - **Docker Compose**: https://docs.docker.com/compose/
 - **PyTorch**: https://pytorch.org/
+
+---
+
+## ☸️ Next: Kubernetes for Production Scale
+
+Setelah berhasil dengan Docker, jika memerlukan:
+- ✅ Multi-node cluster deployment
+- ✅ Cloud-native orchestration (GCP GKE, AWS EKS)
+- ✅ Advanced monitoring & auto-scaling
+- ✅ Enterprise-grade RBAC & security
+
+Upgrade ke **Kubernetes**:
+
+```bash
+# One-command Kubernetes deployment
+bash setup-k8s.sh minikube    # Local testing
+bash setup-k8s.sh gcp         # GCP production
+
+# Monitor training
+kubectl logs -f deployment/fl-server -n flower-fl
+```
+
+📖 Full guide: [KUBERNETES_DEPLOYMENT_GUIDE.md](KUBERNETES_DEPLOYMENT_GUIDE.md)
 
 ---
 
@@ -378,16 +402,22 @@ docker run -d \
 **Configuration**: Production-Grade  
 **Memory Optimized**: Yes (10.5GB total for 15 clients)  
 **GCP Compatible**: Yes (e2-micro server + laptop clients)  
+**Kubernetes Ready**: Yes (see KUBERNETES_DEPLOYMENT_GUIDE.md)
 
 ---
 
 ## 🎉 Next Step
 
 ```bash
-# Start the training!
+# Start the training with Docker!
 cd /home/rna_13/FedLearning/flweatherpred
 docker compose up -d
 docker compose logs -f
+```
+
+Or go **production-scale with Kubernetes**:
+```bash
+bash setup-k8s.sh minikube
 ```
 
 Good luck! 🚀

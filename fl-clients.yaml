@@ -1,0 +1,518 @@
+# =============================================================================
+# fl-clients.yaml - Kubernetes Pods for 15 FL Clients (Multi-City)
+# =============================================================================
+# 15 federated learning clients (one per city) with strict resource limits
+# Each client: 0.5 CPU / 700-800Mi Memory
+# Total: ~10.5GB for 15 clients (safe for 16GB system)
+#
+# Cities (CITY_ID 0-14):
+#   0: Berlin      5: Jeddah      10: Riyadh
+#   1: Cairo       6: London      11: Singapore
+#   2: Dammam      7: Mumbai      12: Sydney
+#   3: Doha        8: New York    13: Tokyo
+#   4: Dubai       9: Paris       14: Toronto
+# =============================================================================
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: flower-fl
+  labels:
+    name: flower-fl
+
+---
+# =============================================================================
+# ConfigMap: Client Configuration (Shared)
+# =============================================================================
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: fl-client-config
+  namespace: flower-fl
+data:
+  # Server address (internal K8s DNS)
+  SERVER_ADDRESS: "fl-server.flower-fl.svc.cluster.local:8080"
+  # Log level
+  LOG_LEVEL: "INFO"
+  # Python optimization
+  PYTHONUNBUFFERED: "1"
+  PYTHONDONTWRITEBYTECODE: "1"
+
+---
+# =============================================================================
+# CLIENT 0: Berlin
+# =============================================================================
+apiVersion: v1
+kind: Pod
+metadata:
+  name: fl-client-0-berlin
+  namespace: flower-fl
+  labels:
+    app: flower
+    component: client
+    city-id: "0"
+    city-name: berlin
+    version: v1
+  annotations:
+    city: "Berlin"
+    dataset: "weather_berlin"
+spec:
+  serviceAccountName: fl-client
+  
+  # Restart policy
+  restartPolicy: OnFailure
+  
+  # Init container: Wait for server to be ready
+  initContainers:
+    - name: wait-for-server
+      image: busybox:1.28
+      command: ['sh', '-c']
+      args:
+        - |
+          echo "Waiting for FL server to be ready..."
+          max_attempts=60
+          attempt=0
+          while [ $attempt -lt $max_attempts ]; do
+            if nc -z fl-server.flower-fl.svc.cluster.local 8080; then
+              echo "✓ Server is ready!"
+              exit 0
+            fi
+            attempt=$((attempt + 1))
+            echo "Attempt $attempt/$max_attempts - Server not ready yet..."
+            sleep 2
+          done
+          echo "✗ Server failed to become ready after $max_attempts attempts"
+          exit 1
+  
+  # Containers
+  containers:
+    - name: client
+      image: fl-weather-client:latest
+      imagePullPolicy: IfNotPresent
+      
+      # Environment variables
+      env:
+        - name: CITY_ID
+          value: "0"
+        - name: SERVER_ADDRESS
+          valueFrom:
+            configMapKeyRef:
+              name: fl-client-config
+              key: SERVER_ADDRESS
+        - name: LOG_LEVEL
+          valueFrom:
+            configMapKeyRef:
+              name: fl-client-config
+              key: LOG_LEVEL
+        - name: PYTHONUNBUFFERED
+          valueFrom:
+            configMapKeyRef:
+              name: fl-client-config
+              key: PYTHONUNBUFFERED
+        - name: PYTHONDONTWRITEBYTECODE
+          valueFrom:
+            configMapKeyRef:
+              name: fl-client-config
+              key: PYTHONDONTWRITEBYTECODE
+      
+      # Resource limits (CRITICAL: strict per-pod limits)
+      resources:
+        requests:
+          cpu: 250m          # 0.25 CPU
+          memory: 400Mi      # 400MB
+        limits:
+          cpu: 500m          # 0.5 CPU
+          memory: 750Mi      # 750MB
+      
+      # Volume mounts
+      volumeMounts:
+        - name: data
+          mountPath: /app/data/processed
+          readOnly: true
+        - name: logs
+          mountPath: /app/logs
+          readOnly: false
+      
+      # Security context
+      securityContext:
+        allowPrivilegeEscalation: false
+        readOnlyRootFilesystem: false
+        runAsNonRoot: true
+        runAsUser: 1000
+        capabilities:
+          drop:
+            - ALL
+  
+  # Volumes
+  volumes:
+    - name: data
+      emptyDir: {}  # In production, use PersistentVolume or ConfigMap
+    - name: logs
+      emptyDir: {}
+
+---
+# =============================================================================
+# CLIENT 1: Cairo
+# =============================================================================
+apiVersion: v1
+kind: Pod
+metadata:
+  name: fl-client-1-cairo
+  namespace: flower-fl
+  labels:
+    app: flower
+    component: client
+    city-id: "1"
+    city-name: cairo
+    version: v1
+  annotations:
+    city: "Cairo"
+spec:
+  serviceAccountName: fl-client
+  restartPolicy: OnFailure
+  
+  initContainers:
+    - name: wait-for-server
+      image: busybox:1.28
+      command: ['sh', '-c']
+      args:
+        - |
+          max_attempts=60
+          attempt=0
+          while [ $attempt -lt $max_attempts ]; do
+            if nc -z fl-server.flower-fl.svc.cluster.local 8080; then
+              exit 0
+            fi
+            attempt=$((attempt + 1))
+            sleep 2
+          done
+          exit 1
+  
+  containers:
+    - name: client
+      image: fl-weather-client:latest
+      imagePullPolicy: IfNotPresent
+      
+      env:
+        - name: CITY_ID
+          value: "1"
+        - name: SERVER_ADDRESS
+          valueFrom:
+            configMapKeyRef:
+              name: fl-client-config
+              key: SERVER_ADDRESS
+        - name: LOG_LEVEL
+          valueFrom:
+            configMapKeyRef:
+              name: fl-client-config
+              key: LOG_LEVEL
+        - name: PYTHONUNBUFFERED
+          valueFrom:
+            configMapKeyRef:
+              name: fl-client-config
+              key: PYTHONUNBUFFERED
+      
+      resources:
+        requests:
+          cpu: 250m
+          memory: 400Mi
+        limits:
+          cpu: 500m
+          memory: 750Mi
+      
+      volumeMounts:
+        - name: data
+          mountPath: /app/data/processed
+          readOnly: true
+        - name: logs
+          mountPath: /app/logs
+      
+      securityContext:
+        allowPrivilegeEscalation: false
+        runAsNonRoot: true
+        runAsUser: 1000
+  
+  volumes:
+    - name: data
+      emptyDir: {}
+    - name: logs
+      emptyDir: {}
+
+---
+# =============================================================================
+# CLIENT 2: Dammam
+# =============================================================================
+apiVersion: v1
+kind: Pod
+metadata:
+  name: fl-client-2-dammam
+  namespace: flower-fl
+  labels:
+    app: flower
+    component: client
+    city-id: "2"
+    city-name: dammam
+    version: v1
+  annotations:
+    city: "Dammam"
+spec:
+  serviceAccountName: fl-client
+  restartPolicy: OnFailure
+  
+  initContainers:
+    - name: wait-for-server
+      image: busybox:1.28
+      command: ['sh', '-c']
+      args:
+        - |
+          max_attempts=60
+          attempt=0
+          while [ $attempt -lt $max_attempts ]; do
+            if nc -z fl-server.flower-fl.svc.cluster.local 8080; then
+              exit 0
+            fi
+            attempt=$((attempt + 1))
+            sleep 2
+          done
+          exit 1
+  
+  containers:
+    - name: client
+      image: fl-weather-client:latest
+      imagePullPolicy: IfNotPresent
+      
+      env:
+        - name: CITY_ID
+          value: "2"
+        - name: SERVER_ADDRESS
+          valueFrom:
+            configMapKeyRef:
+              name: fl-client-config
+              key: SERVER_ADDRESS
+        - name: LOG_LEVEL
+          valueFrom:
+            configMapKeyRef:
+              name: fl-client-config
+              key: LOG_LEVEL
+        - name: PYTHONUNBUFFERED
+          valueFrom:
+            configMapKeyRef:
+              name: fl-client-config
+              key: PYTHONUNBUFFERED
+      
+      resources:
+        requests:
+          cpu: 250m
+          memory: 400Mi
+        limits:
+          cpu: 500m
+          memory: 750Mi
+      
+      volumeMounts:
+        - name: data
+          mountPath: /app/data/processed
+          readOnly: true
+        - name: logs
+          mountPath: /app/logs
+      
+      securityContext:
+        allowPrivilegeEscalation: false
+        runAsNonRoot: true
+        runAsUser: 1000
+  
+  volumes:
+    - name: data
+      emptyDir: {}
+    - name: logs
+      emptyDir: {}
+
+---
+# =============================================================================
+# CLIENT 3-14: TEMPLATE PATTERN
+# =============================================================================
+# Copy the structure below and increment CITY_ID and city name for each:
+#
+# CLIENT 3: Doha (CITY_ID: 3)
+# CLIENT 4: Dubai (CITY_ID: 4)
+# CLIENT 5: Jeddah (CITY_ID: 5)
+# CLIENT 6: London (CITY_ID: 6)
+# CLIENT 7: Mumbai (CITY_ID: 7)
+# CLIENT 8: New York (CITY_ID: 8)
+# CLIENT 9: Paris (CITY_ID: 9)
+# CLIENT 10: Riyadh (CITY_ID: 10)
+# CLIENT 11: Singapore (CITY_ID: 11)
+# CLIENT 12: Sydney (CITY_ID: 12)
+# CLIENT 13: Tokyo (CITY_ID: 13)
+# CLIENT 14: Toronto (CITY_ID: 14)
+#
+# TEMPLATE:
+# ---
+# apiVersion: v1
+# kind: Pod
+# metadata:
+#   name: fl-client-{CITY_ID}-{city-name}
+#   namespace: flower-fl
+#   labels:
+#     app: flower
+#     component: client
+#     city-id: "{CITY_ID}"
+#     city-name: {city-name}
+#     version: v1
+# spec:
+#   serviceAccountName: fl-client
+#   restartPolicy: OnFailure
+#   
+#   initContainers:
+#     - name: wait-for-server
+#       image: busybox:1.28
+#       command: ['sh', '-c']
+#       args:
+#         - |
+#           max_attempts=60
+#           attempt=0
+#           while [ $attempt -lt $max_attempts ]; do
+#             if nc -z fl-server.flower-fl.svc.cluster.local 8080; then
+#               exit 0
+#             fi
+#             attempt=$((attempt + 1))
+#             sleep 2
+#           done
+#           exit 1
+#   
+#   containers:
+#     - name: client
+#       image: fl-weather-client:latest
+#       imagePullPolicy: IfNotPresent
+#       
+#       env:
+#         - name: CITY_ID
+#           value: "{CITY_ID}"
+#         - name: SERVER_ADDRESS
+#           valueFrom:
+#             configMapKeyRef:
+#               name: fl-client-config
+#               key: SERVER_ADDRESS
+#         - name: LOG_LEVEL
+#           valueFrom:
+#             configMapKeyRef:
+#               name: fl-client-config
+#               key: LOG_LEVEL
+#         - name: PYTHONUNBUFFERED
+#           valueFrom:
+#             configMapKeyRef:
+#               name: fl-client-config
+#               key: PYTHONUNBUFFERED
+#       
+#       resources:
+#         requests:
+#           cpu: 250m
+#           memory: 400Mi
+#         limits:
+#           cpu: 500m
+#           memory: 750Mi
+#       
+#       volumeMounts:
+#         - name: data
+#           mountPath: /app/data/processed
+#           readOnly: true
+#         - name: logs
+#           mountPath: /app/logs
+#       
+#       securityContext:
+#         allowPrivilegeEscalation: false
+#         runAsNonRoot: true
+#         runAsUser: 1000
+#   
+#   volumes:
+#     - name: data
+#       emptyDir: {}
+#     - name: logs
+#       emptyDir: {}
+#
+# =============================================================================
+
+---
+# =============================================================================
+# ServiceAccount: Client Pod Identity
+# =============================================================================
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: fl-client
+  namespace: flower-fl
+  labels:
+    app: flower
+    component: client
+
+---
+# =============================================================================
+# Role: Client Permissions
+# =============================================================================
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: fl-client
+  namespace: flower-fl
+  labels:
+    app: flower
+    component: client
+rules:
+  # Allow clients to read ConfigMaps
+  - apiGroups: [""]
+    resources: ["configmaps"]
+    verbs: ["get", "list"]
+  
+  # Allow clients to write logs/events
+  - apiGroups: [""]
+    resources: ["events"]
+    verbs: ["create", "patch"]
+
+---
+# =============================================================================
+# RoleBinding: Bind Role to ServiceAccount
+# =============================================================================
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: fl-client
+  namespace: flower-fl
+  labels:
+    app: flower
+    component: client
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: fl-client
+subjects:
+  - kind: ServiceAccount
+    name: fl-client
+    namespace: flower-fl
+
+# =============================================================================
+# DEPLOYMENT NOTES:
+# =============================================================================
+#
+# This manifest shows all 15 clients (3 fully defined + 12 as template).
+# You have several deployment options:
+#
+# OPTION 1: Manual (shown here - 3 full + 12 template pattern)
+#   - Copy the template 12 times, incrementing CITY_ID and city names
+#   - Apply with: kubectl apply -f fl-clients.yaml
+#
+# OPTION 2: Using Kustomization (recommended for scaling)
+#   - Create a kustomization.yaml with patches
+#   - Use Kustomize to generate all 15 variations
+#   - Apply with: kubectl apply -k ./
+#
+# OPTION 3: Using Helm (enterprise-grade)
+#   - Create values.yaml with city list
+#   - Create Helm templates
+#   - Deploy with: helm install fl-clients ./helm/fl-clients
+#
+# OPTION 4: Using a Shell Script to Generate YAML
+#   - Generate all 15 pods programmatically
+#   - Apply with: bash generate-clients.sh | kubectl apply -f -
+#
+# For now, use OPTION 1 or 2 (Kustomization is recommended).
+#
+# =============================================================================

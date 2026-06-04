@@ -20,6 +20,7 @@
 - [System Requirements](#system-requirements)
 - [Quick Start](#quick-start)
 - [Installation](#installation)
+- [Deployment Options](#deployment-options)
 - [Usage](#usage)
 - [Project Structure](#project-structure)
 - [Documentation](#documentation)
@@ -148,7 +149,57 @@ Expected output:
 
 ---
 
-## 📦 Installation
+## � Deployment Options
+
+This project supports multiple deployment methods for different use cases:
+
+### 1. **Local Development** (Best for learning & testing)
+```bash
+# Simple Python simulation on single machine
+python3 src/simulation.py
+```
+- ✅ Fastest setup (2 minutes)
+- ✅ No Docker/Kubernetes required
+- ⚠️ All 15 clients run on local machine (high memory usage)
+
+### 2. **Docker Containerization** (Best for single-machine deployment)
+```bash
+# One-command deployment with automatic orchestration
+bash docker-quickstart.sh
+```
+- ✅ Memory-optimized (strict per-container limits)
+- ✅ Isolated environments (no dependency conflicts)
+- ✅ Easy monitoring (docker compose logs)
+- ✅ Automatic restart on failure
+- 📖 [See DOCKER_SETUP.md](DOCKER_SETUP.md) for complete guide
+
+### 3. **Kubernetes Orchestration** (Best for production/scaling)
+```bash
+# One-command deployment to any Kubernetes cluster
+bash setup-k8s.sh minikube  # or gcp, kind, etc
+```
+- ✅ Multi-node cluster support (scale across machines)
+- ✅ Production-grade RBAC & security
+- ✅ Automatic health checks & recovery
+- ✅ Cloud-native deployment (GCP GKE, AWS EKS, Azure AKS)
+- ✅ Advanced monitoring & metrics collection
+- 📖 [See KUBERNETES_DEPLOYMENT_GUIDE.md](KUBERNETES_DEPLOYMENT_GUIDE.md) for complete guide
+
+### Comparison Table
+
+| Feature | Python | Docker | Kubernetes |
+|---------|--------|--------|-------------|
+| Setup Time | 2 min | 10 min | 15 min |
+| Single Machine | ✅ | ✅ | ✅ |
+| Multi-Node | ❌ | ❌ | ✅ |
+| Memory Control | Manual | Automatic (limits) | Automatic (limits + quotas) |
+| High Availability | ❌ | ⚠️ (restart only) | ✅ (full HA) |
+| Cloud-Ready | ❌ | ⚠️ (docker registry) | ✅ (native) |
+| Best For | Learning | Production-local | Production-enterprise |
+
+---
+
+## �📦 Installation
 
 ### Option A: Standard Installation
 
@@ -201,11 +252,40 @@ pip install pytest black flake8 mypy  # Optional: dev tools
 pre-commit install
 ```
 
+### Option D: Docker Installation (Single Machine)
+
+```bash
+# Quick start with Docker Compose (15 clients + 1 server)
+bash docker-quickstart.sh
+
+# Or build manually
+docker compose build
+docker compose up -d
+
+# Monitor
+docker compose logs -f fl-server
+```
+
+### Option E: Kubernetes Installation (Production/Multi-Node)
+
+```bash
+# One-command Kubernetes deployment
+bash setup-k8s.sh minikube    # Local testing
+bash setup-k8s.sh gcp         # GCP production
+
+# Or manual step-by-step
+kubectl apply -f fl-server.yaml
+bash generate-fl-clients.sh | kubectl apply -f -
+
+# Monitor
+kubectl logs -f deployment/fl-server -n flower-fl
+```
+
 ---
 
 ## 💻 Usage
 
-### Running the Full Federated Learning Pipeline
+### 1️⃣ Local Python Simulation (For Learning & Development)
 
 ```bash
 # 1. Activate environment
@@ -217,6 +297,46 @@ python3 src/simulation.py
 # 3. Monitor progress
 tail -f logs/server.log
 ```
+
+### 2️⃣ Docker Deployment (Single Machine Production)
+
+```bash
+# Quick start
+cd /home/rna_13/FedLearning/flweatherpred
+bash docker-quickstart.sh
+
+# Monitor training
+docker compose logs -f fl-server
+
+# View all containers
+docker compose ps
+
+# Stop everything
+docker compose down
+```
+
+See [DOCKER_SETUP.md](DOCKER_SETUP.md) for complete Docker guide including monitoring, scaling, and troubleshooting.
+
+### 3️⃣ Kubernetes Deployment (Multi-Node/Production)
+
+```bash
+# One-command deployment (Minikube for local testing)
+bash setup-k8s.sh minikube
+
+# Or for GCP production
+bash setup-k8s.sh gcp
+
+# Monitor training
+kubectl logs -f deployment/fl-server -n flower-fl
+
+# View all pods
+kubectl get pods -n flower-fl
+
+# Port forward for local access
+kubectl port-forward svc/fl-server 8080:8080 -n flower-fl
+```
+
+See [KUBERNETES_DEPLOYMENT_GUIDE.md](KUBERNETES_DEPLOYMENT_GUIDE.md) for complete Kubernetes guide including multi-cloud deployment, monitoring, and scaling.
 
 ### Running Individual Components
 
@@ -327,7 +447,7 @@ flweatherpred/
 
 ## 📚 Documentation
 
-This repository includes comprehensive production-grade documentation (244 KB across 5 files):
+This repository includes comprehensive production-grade documentation (300+ KB across 8 files):
 
 ### 📘 [1. Architecture Guide](docs/1_ARCHITECTURE.md)
 - System design and component interactions
@@ -376,6 +496,38 @@ This repository includes comprehensive production-grade documentation (244 KB ac
 - Support procedures
 
 **Read this for**: Resolving errors, debugging, performance tuning
+
+### 🐳 [6. Docker Setup Guide](DOCKER_SETUP.md)
+- Complete Docker containerization guide
+- docker-compose orchestration for 15 clients
+- Memory optimization strategies
+- Single-machine deployment
+- Monitoring with Docker tools
+- GCP deployment via Docker
+
+**Read this for**: Docker-based deployment on single machine
+
+### ☸️ [7. Kubernetes Deployment Guide](KUBERNETES_DEPLOYMENT_GUIDE.md)
+- Complete Kubernetes manifests & scripts
+- Multi-node cluster orchestration
+- 1 central server + 15 city clients
+- Cloud deployment (GCP, AWS, Azure)
+- Production-grade RBAC & security
+- Advanced monitoring & scaling
+- 50+ kubectl commands reference
+- Comprehensive troubleshooting
+
+**Read this for**: Production Kubernetes deployment, multi-node scaling
+
+### 🗂️ [8. Kubernetes Index Guide](KUBERNETES_INDEX.md)
+- Quick reference for K8s deployment
+- Architecture overview
+- Resource configuration details
+- Common deployment tasks
+- Pre-deployment checklist
+- File structure & navigation
+
+**Read this for**: Quick navigation of Kubernetes setup
 
 ---
 
@@ -567,6 +719,41 @@ If you use this project in research, please cite:
   url={https://github.com/rzkinhfiz/fl-weather-pred-fedavg},
   note={Production-grade FL system for weather forecasting}
 }
+```
+
+---
+
+## 📦 Deployment Resources
+
+Ready-to-use configuration files for quick deployment:
+
+### Docker Deployment Files
+- ✅ `Dockerfile.server` - Lightweight server image (no PyTorch)
+- ✅ `Dockerfile.client` - Client image with CPU-only PyTorch
+- ✅ `docker-compose.yml` - 15 clients + 1 server orchestration
+- ✅ `docker-quickstart.sh` - One-command setup automation
+- ✅ [DOCKER_SETUP.md](DOCKER_SETUP.md) - Complete Docker guide
+
+### Kubernetes Deployment Files  
+- ✅ `fl-server.yaml` - Server deployment, service, RBAC (250+ lines)
+- ✅ `fl-clients.yaml` - Client pods with templates (350+ lines)
+- ✅ `generate-fl-clients.sh` - Auto-generates all 15 client pods
+- ✅ `setup-k8s.sh` - One-command K8s deployment (supports Minikube/Kind/GCP)
+- ✅ [KUBERNETES_DEPLOYMENT_GUIDE.md](KUBERNETES_DEPLOYMENT_GUIDE.md) - Complete K8s guide (300+ lines)
+- ✅ [KUBERNETES_INDEX.md](KUBERNETES_INDEX.md) - Quick reference
+
+### Quick Start Commands
+
+```bash
+# Python simulation (local development)
+python3 src/simulation.py
+
+# Docker deployment (single machine)
+bash docker-quickstart.sh
+
+# Kubernetes deployment (multi-node)
+bash setup-k8s.sh minikube  # Minikube for local testing
+bash setup-k8s.sh gcp       # GCP for production
 ```
 
 ---

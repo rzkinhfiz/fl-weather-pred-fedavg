@@ -1,8 +1,10 @@
-# 🎯 DOCKER CONFIGURATION - DELIVERY SUMMARY
+# 🎯 DEPLOYMENT CONFIGURATION - COMPLETE SETUP ✅
 
 ## ✅ COMPLETION STATUS: 100% READY FOR DEPLOYMENT
 
 ### 📦 **Fail-Fail Yang Telah Disiapkan**
+
+#### **A. Docker Configuration**
 
 | # | Fail | Saiz | Status | Keterangan |
 |---|------|------|--------|-----------|
@@ -14,9 +16,23 @@
 | F | `DOCKER_SETUP.md` | 15KB | ✅ | Dokumentasi lengkap |
 | G | `DOCKER_READY.md` | 10KB | ✅ | Quick reference & summary |
 | H | `docker-quickstart.sh` | 3.5KB | ✅ | Automated setup script |
-| I | `VERIFY_SETUP.sh` | - | ✅ | Verification & status report |
 
-**Total Configuration**: ~48KB of production-ready Docker files
+**Total Docker Configuration**: ~48KB
+
+#### **B. Kubernetes Configuration** (NEW)
+
+| # | Fail | Saiz | Status | Keterangan |
+|---|------|------|--------|-----------|
+| I | `fl-server.yaml` | 9.2KB | ✅ | Server deployment + service + RBAC |
+| J | `fl-clients.yaml` | 14KB | ✅ | Client pods with templates |
+| K | `generate-fl-clients.sh` | 7KB | ✅ | Auto-generate all 15 clients |
+| L | `setup-k8s.sh` | 8.5KB | ✅ | One-command K8s deployment |
+| M | `KUBERNETES_DEPLOYMENT_GUIDE.md` | 20KB | ✅ | Complete guide (300+ lines) |
+| N | `KUBERNETES_INDEX.md` | 11KB | ✅ | Quick reference |
+
+**Total Kubernetes Configuration**: ~80KB
+
+**Grand Total**: ~128KB of production-ready deployment files
 
 ---
 
@@ -154,14 +170,37 @@ df -h /               # ≥ 10GB free
 
 ## 🎯 DEPLOYMENT SCENARIOS
 
-### Local Development (Laptop)
+### 1. Local Development (Laptop) - Python Direct
+```bash
+python3 src/simulation.py
+```
+
+### 2. Single Machine Production - Docker Compose
 ```bash
 docker compose up -d
 docker compose logs -f
 docker stats  # Monitor memory
 ```
 
-### Production on GCP e2-micro
+### 3. Multi-Node / Cloud Production - Kubernetes
+
+**Local Testing:**
+```bash
+bash setup-k8s.sh minikube
+```
+
+**GCP Production:**
+```bash
+bash setup-k8s.sh gcp
+```
+
+**AWS EKS:**
+```bash
+kubectl apply -f fl-server.yaml
+bash generate-fl-clients.sh | kubectl apply -f -
+```
+
+### 4. GCP e2-micro Server + Laptop Clients (Hybrid)
 ```bash
 # Push to container registry
 docker push gcr.io/PROJECT/fl-weather-server:latest
@@ -170,7 +209,7 @@ docker push gcr.io/PROJECT/fl-weather-client:latest
 # See DOCKER_SETUP.md for Cloud Run / GKE deployment
 ```
 
-### Testing Single Client
+### 5. Testing Single Client
 ```bash
 docker run -e CITY_ID=0 -e SERVER_ADDRESS=localhost:8080 \
   -v $(pwd)/data/processed:/app/data/processed:ro \
@@ -181,14 +220,25 @@ docker run -e CITY_ID=0 -e SERVER_ADDRESS=localhost:8080 \
 
 ## 📚 DOCUMENTATION FILES
 
+### Docker Configuration Files
 | File | Purpose | Size |
 |------|---------|------|
-| [DOCKER_SETUP.md](DOCKER_SETUP.md) | Comprehensive guide with all details | 15KB |
+| [DOCKER_SETUP.md](DOCKER_SETUP.md) | Comprehensive Docker guide with all details | 15KB |
 | [DOCKER_READY.md](DOCKER_READY.md) | Quick reference & next steps | 10KB |
 | [Dockerfile.server](Dockerfile.server) | Server container definition | 2.4KB |
 | [Dockerfile.client](Dockerfile.client) | Client container template | 3.4KB |
 | [docker-compose.yml](docker-compose.yml) | 15-client orchestration | 14KB |
 | [docker-quickstart.sh](docker-quickstart.sh) | Automated build & start | 3.5KB |
+
+### Kubernetes Configuration Files (NEW)
+| File | Purpose | Size |
+|------|---------|------|
+| [KUBERNETES_DEPLOYMENT_GUIDE.md](KUBERNETES_DEPLOYMENT_GUIDE.md) | Complete Kubernetes guide (300+ lines) | 20KB |
+| [KUBERNETES_INDEX.md](KUBERNETES_INDEX.md) | Quick reference & navigation | 11KB |
+| [fl-server.yaml](fl-server.yaml) | Server deployment + service + RBAC | 9.2KB |
+| [fl-clients.yaml](fl-clients.yaml) | Client pods (3 full + 12 template) | 14KB |
+| [generate-fl-clients.sh](generate-fl-clients.sh) | Auto-generate all 15 clients | 7KB |
+| [setup-k8s.sh](setup-k8s.sh) | One-command K8s deployment | 8.5KB |
 
 ---
 
@@ -276,12 +326,45 @@ See [DOCKER_SETUP.md](DOCKER_SETUP.md#-monitoring--troubleshooting) for more tro
 
 ---
 
+## ☸️ KUBERNETES DEPLOYMENT (Optional - Production Scale)
+
+Setelah berhasil dengan Docker, Anda juga bisa deploy ke **Kubernetes** untuk:
+- ✅ Multi-node cluster orchestration
+- ✅ Cloud-native deployment (GCP GKE, AWS EKS, Azure AKS)
+- ✅ Enterprise-grade RBAC & security
+- ✅ Advanced auto-scaling & monitoring
+
+### Kubernetes Files Available
+- ✅ `fl-server.yaml` - Deployment, Service, RBAC (250+ lines)
+- ✅ `fl-clients.yaml` - Client pods with templates (350+ lines)
+- ✅ `generate-fl-clients.sh` - Auto-generate all 15 clients
+- ✅ `setup-k8s.sh` - One-command deployment
+- ✅ [KUBERNETES_DEPLOYMENT_GUIDE.md](KUBERNETES_DEPLOYMENT_GUIDE.md) - Complete guide (300+ lines)
+
+### Quick Start dengan Kubernetes
+
+```bash
+# Automated deployment (Minikube untuk local testing)
+bash setup-k8s.sh minikube
+
+# Atau untuk GCP production
+bash setup-k8s.sh gcp
+
+# Monitor training
+kubectl logs -f deployment/fl-server -n flower-fl
+```
+
+📖 Full Kubernetes guide: [KUBERNETES_DEPLOYMENT_GUIDE.md](KUBERNETES_DEPLOYMENT_GUIDE.md)
+
+---
+
 **Created**: June 5, 2026  
 **Status**: ✅ Production Ready  
 **Version**: 1.0  
 **Framework**: Flower v1.8+  
 **Python**: 3.10-slim  
 **Memory Optimized**: Yes (10.5GB total)  
+**Kubernetes Ready**: Yes (see KUBERNETES_DEPLOYMENT_GUIDE.md)
 
 ---
 
@@ -294,6 +377,17 @@ See [DOCKER_SETUP.md](DOCKER_SETUP.md#-monitoring--troubleshooting) for more tro
 ✅ **E. Memory Limits** - Configured (700MB per client)  
 ✅ **F. PyTorch CPU-only** - Configured  
 ✅ **G. 15 City Mapping** - Verified  
-✅ **H. Production Ready** - Yes
+✅ **H. Docker Production Ready** - Yes  
+✅ **I. Kubernetes Files** - 6 files created (80KB)  
+✅ **J. Kubernetes Production Ready** - Yes
 
 **Ready to Deploy!** 🚀
+
+**Choose your deployment:**
+```bash
+# Docker (single machine)
+docker compose up -d
+
+# Kubernetes (multi-node/cloud)
+bash setup-k8s.sh minikube  # or gcp
+```
