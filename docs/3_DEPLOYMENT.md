@@ -1378,5 +1378,6 @@ python -m src.simulation --dry-run
 
 **End of Deployment Document**
 
-Previous: [2_IMPLEMENTATION.md](2_IMPLEMENTATION.md) - Code walkthrough and API reference  
+Previous: [2_IMPLEMENTATION.md](2_IMPLEMENTATION.md) - Code walkthrough and API reference
+
 Next: [4_EVALUATION.md](4_EVALUATION.md) - Performance analysis and benchmarks
