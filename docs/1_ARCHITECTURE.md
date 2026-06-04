@@ -1267,4 +1267,4 @@ For implementation details, see: [2_IMPLEMENTATION.md](2_IMPLEMENTATION.md)
 
 For deployment procedures, see: [3_DEPLOYMENT.md](3_DEPLOYMENT.md)
 
-For performance analysis, see: [4_EVALUATION.md] (4_EVALUATION.md)
+For performance analysis, see: [4_EVALUATION.md](4_EVALUATION.md)
