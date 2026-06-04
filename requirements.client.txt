@@ -1,0 +1,11 @@
+flwr[simulation]>=1.8.0
+numpy>=1.23.0
+pandas>=1.5.0
+scikit-learn>=1.2.0
+protobuf>=3.20.0
+# Note: PyTorch CPU-only installed separately in Dockerfile via:
+# pip install --index-url https://download.pytorch.org/whl/cpu torch==2.0.1
+
+# Utilities
+pyyaml==6.0
+protobuf==4.23.4

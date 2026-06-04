@@ -1,0 +1,105 @@
+# =============================================================================
+# Dockerfile.client - Multi-City Federated Learning Client untuk Laptop
+# =============================================================================
+# Optimized untuk:
+# - Memory-efficient: PyTorch CPU-only (tanpa CUDA)
+# - Per-container limit: 600-800MB
+# - Base image: python:3.10-slim (~200MB)
+# - Support argumen: --city_id, --server_address
+# =============================================================================
+
+FROM python:3.10-slim
+
+# Metadata
+LABEL maintainer="FL Weather Prediction Team"
+LABEL description="FL Client untuk PyTorch LSTM weather prediction"
+LABEL version="1.0"
+
+# Set environment variables - Optimize untuk memory
+ENV PYTHONUNBUFFERED=1 \
+    PYTHONDONTWRITEBYTECODE=1 \
+    PIP_NO_CACHE_DIR=1 \
+    DEBIAN_FRONTEND=noninteractive \
+    TORCH_HOME=/tmp/torch \
+    PYTHONOPTIMIZE=2 \
+    OMP_NUM_THREADS=1 \
+    MKL_NUM_THREADS=1 \
+    NUMEXPR_NUM_THREADS=1
+
+# Set working directory
+WORKDIR /app
+
+# Install minimal system dependencies
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    ca-certificates \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+# Upgrade pip
+RUN pip install --upgrade pip --no-cache-dir
+
+# Install Python dependencies dengan PyTorch CPU-only
+# PyTorch CPU-only sangat ringan (~150MB) dibanding CUDA (~4GB)
+RUN pip install --no-cache-dir \
+    flwr[simulation]>=1.8.0 \
+    numpy>=1.23.0 \
+    pandas>=1.5.0 \
+    scikit-learn>=1.2.0 \
+    protobuf>=3.20.0
+
+# Install PyTorch CPU-only (khusus dari official wheel)
+RUN pip install --no-cache-dir \
+    --index-url https://download.pytorch.org/whl/cpu \
+    torch==2.0.1 \
+    torchvision==0.15.2
+
+# Copy source code
+COPY src/client_app.py /app/client_app.py
+COPY src/client.py /app/client.py
+COPY src/model.py /app/model.py
+COPY src/config.py /app/config.py
+COPY src/utils.py /app/utils.py
+COPY src/__init__.py /app/__init__.py
+
+# Copy data (dataset cuaca untuk semua kota)
+COPY data/processed/ /app/data/processed/
+
+# Create logs directory
+RUN mkdir -p /app/logs
+
+# Create entrypoint script untuk menerima argumen environment variable
+RUN echo '#!/bin/bash\n\
+python /app/client_app.py \\\n\
+  --city_id "${CITY_ID:-0}" \\\n\
+  --server_address "${SERVER_ADDRESS:-localhost:8080}" \\\n\
+  --log_level "${LOG_LEVEL:-INFO}"\n\
+' > /app/entrypoint.sh && chmod +x /app/entrypoint.sh
+
+# No health check untuk client (depends on server connection)
+
+# Default entrypoint - boleh override dengan docker run -e CITY_ID=1
+ENTRYPOINT ["/app/entrypoint.sh"]
+
+# =============================================================================
+# BUILD & RUN INSTRUCTIONS:
+#
+# BUILD:
+#   docker build -f Dockerfile.client -t fl-weather-client:latest .
+#
+# RUN (single client):
+#   docker run -e CITY_ID=0 -e SERVER_ADDRESS=localhost:8080 fl-weather-client:latest
+#
+# RUN (multiple via docker-compose):
+#   docker compose up -d  # lihat docker-compose.yml untuk 15 klien
+# =============================================================================
+
+# Copy data directory (mounted sebagai volume, tapi persiapkan struktur)
+COPY data/processed /app/data/processed
+
+# Create logs directory
+RUN mkdir -p /app/logs
+
+# Default: city_id dan server_address akan diberikan sebagai argumen
+# Gunakan shell form agar environment variables boleh dipass
+ENTRYPOINT ["python", "client_app.py"]
+CMD ["--city_id", "0", "--server_address", "fl-server:8080"]

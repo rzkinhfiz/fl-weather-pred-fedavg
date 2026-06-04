@@ -101,7 +101,7 @@ A decentralized federated learning approach where:
 
 ### 1. Clone Repository
 ```bash
-git clone https://github.com/yourusername/flweatherpred.git
+git clone https://github.com/rzkinhfiz/fl-weather-pred-fedavg.git
 cd flweatherpred
 ```
 
@@ -154,7 +154,7 @@ Expected output:
 
 ```bash
 # Clone repository
-git clone https://github.com/yourusername/flweatherpred.git
+git https://github.com/rzkinhfiz/fl-weather-pred-fedavg.git
 cd flweatherpred
 
 # Create conda environment from file (if available)
@@ -186,7 +186,7 @@ docker run --gpus all flweatherpred:latest python3 src/simulation.py
 
 ```bash
 # Clone + install in development mode
-git clone https://github.com/yourusername/flweatherpred.git
+git clone https://github.com/rzkinhfiz/fl-weather-pred-fedavg.git
 cd flweatherpred
 
 # Create environment
@@ -562,9 +562,9 @@ If you use this project in research, please cite:
 ```bibtex
 @software{flweatherpred2026,
   title={Federated Learning Weather Prediction System},
-  author={Your Name},
+  author={Rizki Nurhafizd Achmad},
   year={2026},
-  url={https://github.com/yourusername/flweatherpred},
+  url={https://github.com/rzkinhfiz/fl-weather-pred-fedavg},
   note={Production-grade FL system for weather forecasting}
 }
 ```
@@ -606,7 +606,7 @@ See [5_TROUBLESHOOTING.md](docs/5_TROUBLESHOOTING.md) for 50+ solutions.
 
 ### Weather Prediction
 - [Deep Learning for Weather (Reichstein et al., 2019)](https://www.nature.com/articles/s41586-019-1308-0)
-- [Multi-City Weather Analysis](https://www.kaggle.com/datasets/datasets)
+- [Global Weather Dataset 2025 (Synthetic)](https://www.kaggle.com/datasets/syedaeman2212/weather-dataset)
 
 ---
 
@@ -614,15 +614,14 @@ See [5_TROUBLESHOOTING.md](docs/5_TROUBLESHOOTING.md) for 50+ solutions.
 
 - **Flower Team**: For the excellent federated learning framework
 - **PyTorch Team**: For deep learning infrastructure
-- **Dataset Contributors**: Weather data providers worldwide
 - **Community**: For feedback and contributions
 
 ---
 
 ## 📞 Contact
 
-- **Issues**: [GitHub Issues](https://github.com/yourusername/flweatherpred/issues)
-- **Email**: your.email@example.com
+- **Issues**: [GitHub Issues](https://github.com/rzkinhfiz/fl-weather-pred-fedavg/issues)
+- **Email**: hafizachmad13@gmail.com
 - **Documentation**: [docs/](docs/) directory
 
 ---
@@ -661,7 +660,7 @@ See [5_TROUBLESHOOTING.md](docs/5_TROUBLESHOOTING.md) for 50+ solutions.
 ### البدء السريع
 
 ```bash
-git clone https://github.com/yourusername/flweatherpred.git
+git clone https://github.com/rzkinhfiz/fl-weather-pred-fedavg.git
 cd flweatherpred
 conda create -n fl-weather python=3.11
 conda activate fl-weather
@@ -706,7 +705,7 @@ Proyek ini mengimplementasikan sistem **Federated Learning (FL)** tingkat produk
 ### Mulai Cepat
 
 ```bash
-git clone https://github.com/yourusername/flweatherpred.git
+git clone https://github.com/rzkinhfiz/fl-weather-pred-fedavg.git
 cd flweatherpred
 conda create -n fl-weather python=3.11
 conda activate fl-weather

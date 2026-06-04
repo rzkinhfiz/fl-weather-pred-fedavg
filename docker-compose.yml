@@ -1,0 +1,613 @@
+# =============================================================================
+# docker-compose.yml - Orkestrasi 15 FL Clients dengan Memory Limits Ketat
+# =============================================================================
+# Architecture:
+# - fl-server:  Central aggregator (GCP e2-micro compatibility)
+# - fl-client-0 hingga fl-client-14: 15 city clients
+#
+# Memory Configuration:
+# - Per client: 600-800MB (KETAT)
+# - Per server: 512MB
+# - Total: ~10.5GB (aman di bawah 16GB laptop dengan buffer OS/Apps)
+#
+# Startup Strategy:
+# - restart: on-failure (toleran terhadap network delay)
+# - depends_on: server (wait hingga server ready)
+# - Staggered launch dengan healthcheck
+# =============================================================================
+
+version: '3.9'
+
+services:
+  # ===========================================================================
+  # CENTRAL SERVER - Memory-optimized aggregator
+  # ===========================================================================
+  fl-server:
+    build:
+      context: .
+      dockerfile: Dockerfile.server
+    container_name: fl-server
+    image: fl-weather-server:latest
+    ports:
+      - "8080:8080"
+    environment:
+      - LOG_LEVEL=INFO
+      - NUM_ROUNDS=10
+      - MIN_FIT_CLIENTS=3
+    volumes:
+      - ./logs:/app/logs
+    networks:
+      - fl-network
+    restart: on-failure
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 512M
+        reservations:
+          cpus: '0.5'
+          memory: 256M
+    healthcheck:
+      test: ["CMD", "python", "-c", "import socket; socket.create_connection(('localhost', 8080), timeout=2)"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  # ===========================================================================
+  # FL CLIENTS (0-14) - 15 city-based clients dengan strict memory limits
+  # ===========================================================================
+
+  # Client 0: Berlin
+  fl-client-0:
+    build:
+      context: .
+      dockerfile: Dockerfile.client
+    container_name: fl-client-0
+    image: fl-weather-client:latest
+    environment:
+      - CITY_ID=0
+      - SERVER_ADDRESS=fl-server:8080
+      - LOG_LEVEL=INFO
+      - PYTHONUNBUFFERED=1
+    volumes:
+      - ./data/processed:/app/data/processed:ro
+      - ./logs:/app/logs
+    networks:
+      - fl-network
+    depends_on:
+      fl-server:
+        condition: service_healthy
+    restart: on-failure
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 700M
+        reservations:
+          cpus: '0.25'
+          memory: 400M
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "5m"
+        max-file: "2"
+
+  # Client 1: Cairo
+  fl-client-1:
+    build:
+      context: .
+      dockerfile: Dockerfile.client
+    container_name: fl-client-1
+    image: fl-weather-client:latest
+    environment:
+      - CITY_ID=1
+      - SERVER_ADDRESS=fl-server:8080
+      - LOG_LEVEL=INFO
+    volumes:
+      - ./data/processed:/app/data/processed:ro
+      - ./logs:/app/logs
+    networks:
+      - fl-network
+    depends_on:
+      fl-server:
+        condition: service_healthy
+    restart: on-failure
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 700M
+        reservations:
+          cpus: '0.25'
+          memory: 400M
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "5m"
+        max-file: "2"
+
+  # Client 2: Dammam
+  fl-client-2:
+    build:
+      context: .
+      dockerfile: Dockerfile.client
+    container_name: fl-client-2
+    image: fl-weather-client:latest
+    environment:
+      - CITY_ID=2
+      - SERVER_ADDRESS=fl-server:8080
+      - LOG_LEVEL=INFO
+    volumes:
+      - ./data/processed:/app/data/processed:ro
+      - ./logs:/app/logs
+    networks:
+      - fl-network
+    depends_on:
+      fl-server:
+        condition: service_healthy
+    restart: on-failure
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 700M
+        reservations:
+          cpus: '0.25'
+          memory: 400M
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "5m"
+        max-file: "2"
+
+  # Client 3: Doha
+  fl-client-3:
+    build:
+      context: .
+      dockerfile: Dockerfile.client
+    container_name: fl-client-3
+    image: fl-weather-client:latest
+    environment:
+      - CITY_ID=3
+      - SERVER_ADDRESS=fl-server:8080
+      - LOG_LEVEL=INFO
+    volumes:
+      - ./data/processed:/app/data/processed:ro
+      - ./logs:/app/logs
+    networks:
+      - fl-network
+    depends_on:
+      fl-server:
+        condition: service_healthy
+    restart: on-failure
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 700M
+        reservations:
+          cpus: '0.25'
+          memory: 400M
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "5m"
+        max-file: "2"
+
+  # Client 4: Dubai
+  fl-client-4:
+    build:
+      context: .
+      dockerfile: Dockerfile.client
+    container_name: fl-client-4
+    image: fl-weather-client:latest
+    environment:
+      - CITY_ID=4
+      - SERVER_ADDRESS=fl-server:8080
+      - LOG_LEVEL=INFO
+    volumes:
+      - ./data/processed:/app/data/processed:ro
+      - ./logs:/app/logs
+    networks:
+      - fl-network
+    depends_on:
+      fl-server:
+        condition: service_healthy
+    restart: on-failure
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 700M
+        reservations:
+          cpus: '0.25'
+          memory: 400M
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "5m"
+        max-file: "2"
+
+  # Client 5: Jeddah
+  fl-client-5:
+    build:
+      context: .
+      dockerfile: Dockerfile.client
+    container_name: fl-client-5
+    image: fl-weather-client:latest
+    environment:
+      - CITY_ID=5
+      - SERVER_ADDRESS=fl-server:8080
+      - LOG_LEVEL=INFO
+    volumes:
+      - ./data/processed:/app/data/processed:ro
+      - ./logs:/app/logs
+    networks:
+      - fl-network
+    depends_on:
+      fl-server:
+        condition: service_healthy
+    restart: on-failure
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 700M
+        reservations:
+          cpus: '0.25'
+          memory: 400M
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "5m"
+        max-file: "2"
+
+  # Client 6: London
+  fl-client-6:
+    build:
+      context: .
+      dockerfile: Dockerfile.client
+    container_name: fl-client-6
+    image: fl-weather-client:latest
+    environment:
+      - CITY_ID=6
+      - SERVER_ADDRESS=fl-server:8080
+      - LOG_LEVEL=INFO
+    volumes:
+      - ./data/processed:/app/data/processed:ro
+      - ./logs:/app/logs
+    networks:
+      - fl-network
+    depends_on:
+      fl-server:
+        condition: service_healthy
+    restart: on-failure
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 700M
+        reservations:
+          cpus: '0.25'
+          memory: 400M
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "5m"
+        max-file: "2"
+
+  # Client 7: Mumbai
+  fl-client-7:
+    build:
+      context: .
+      dockerfile: Dockerfile.client
+    container_name: fl-client-7
+    image: fl-weather-client:latest
+    environment:
+      - CITY_ID=7
+      - SERVER_ADDRESS=fl-server:8080
+      - LOG_LEVEL=INFO
+    volumes:
+      - ./data/processed:/app/data/processed:ro
+      - ./logs:/app/logs
+    networks:
+      - fl-network
+    depends_on:
+      fl-server:
+        condition: service_healthy
+    restart: on-failure
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 700M
+        reservations:
+          cpus: '0.25'
+          memory: 400M
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "5m"
+        max-file: "2"
+
+  # Client 8: New York
+  fl-client-8:
+    build:
+      context: .
+      dockerfile: Dockerfile.client
+    container_name: fl-client-8
+    image: fl-weather-client:latest
+    environment:
+      - CITY_ID=8
+      - SERVER_ADDRESS=fl-server:8080
+      - LOG_LEVEL=INFO
+    volumes:
+      - ./data/processed:/app/data/processed:ro
+      - ./logs:/app/logs
+    networks:
+      - fl-network
+    depends_on:
+      fl-server:
+        condition: service_healthy
+    restart: on-failure
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 700M
+        reservations:
+          cpus: '0.25'
+          memory: 400M
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "5m"
+        max-file: "2"
+
+  # Client 9: Paris
+  fl-client-9:
+    build:
+      context: .
+      dockerfile: Dockerfile.client
+    container_name: fl-client-9
+    image: fl-weather-client:latest
+    environment:
+      - CITY_ID=9
+      - SERVER_ADDRESS=fl-server:8080
+      - LOG_LEVEL=INFO
+    volumes:
+      - ./data/processed:/app/data/processed:ro
+      - ./logs:/app/logs
+    networks:
+      - fl-network
+    depends_on:
+      fl-server:
+        condition: service_healthy
+    restart: on-failure
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 700M
+        reservations:
+          cpus: '0.25'
+          memory: 400M
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "5m"
+        max-file: "2"
+
+  # Client 10: Riyadh
+  fl-client-10:
+    build:
+      context: .
+      dockerfile: Dockerfile.client
+    container_name: fl-client-10
+    image: fl-weather-client:latest
+    environment:
+      - CITY_ID=10
+      - SERVER_ADDRESS=fl-server:8080
+      - LOG_LEVEL=INFO
+    volumes:
+      - ./data/processed:/app/data/processed:ro
+      - ./logs:/app/logs
+    networks:
+      - fl-network
+    depends_on:
+      fl-server:
+        condition: service_healthy
+    restart: on-failure
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 700M
+        reservations:
+          cpus: '0.25'
+          memory: 400M
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "5m"
+        max-file: "2"
+
+  # Client 11: Singapore
+  fl-client-11:
+    build:
+      context: .
+      dockerfile: Dockerfile.client
+    container_name: fl-client-11
+    image: fl-weather-client:latest
+    environment:
+      - CITY_ID=11
+      - SERVER_ADDRESS=fl-server:8080
+      - LOG_LEVEL=INFO
+    volumes:
+      - ./data/processed:/app/data/processed:ro
+      - ./logs:/app/logs
+    networks:
+      - fl-network
+    depends_on:
+      fl-server:
+        condition: service_healthy
+    restart: on-failure
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 700M
+        reservations:
+          cpus: '0.25'
+          memory: 400M
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "5m"
+        max-file: "2"
+
+  # Client 12: Sydney
+  fl-client-12:
+    build:
+      context: .
+      dockerfile: Dockerfile.client
+    container_name: fl-client-12
+    image: fl-weather-client:latest
+    environment:
+      - CITY_ID=12
+      - SERVER_ADDRESS=fl-server:8080
+      - LOG_LEVEL=INFO
+    volumes:
+      - ./data/processed:/app/data/processed:ro
+      - ./logs:/app/logs
+    networks:
+      - fl-network
+    depends_on:
+      fl-server:
+        condition: service_healthy
+    restart: on-failure
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 700M
+        reservations:
+          cpus: '0.25'
+          memory: 400M
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "5m"
+        max-file: "2"
+
+  # Client 13: Tokyo
+  fl-client-13:
+    build:
+      context: .
+      dockerfile: Dockerfile.client
+    container_name: fl-client-13
+    image: fl-weather-client:latest
+    environment:
+      - CITY_ID=13
+      - SERVER_ADDRESS=fl-server:8080
+      - LOG_LEVEL=INFO
+    volumes:
+      - ./data/processed:/app/data/processed:ro
+      - ./logs:/app/logs
+    networks:
+      - fl-network
+    depends_on:
+      fl-server:
+        condition: service_healthy
+    restart: on-failure
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 700M
+        reservations:
+          cpus: '0.25'
+          memory: 400M
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "5m"
+        max-file: "2"
+
+  # Client 14: Toronto
+  fl-client-14:
+    build:
+      context: .
+      dockerfile: Dockerfile.client
+    container_name: fl-client-14
+    image: fl-weather-client:latest
+    environment:
+      - CITY_ID=14
+      - SERVER_ADDRESS=fl-server:8080
+      - LOG_LEVEL=INFO
+    volumes:
+      - ./data/processed:/app/data/processed:ro
+      - ./logs:/app/logs
+    networks:
+      - fl-network
+    depends_on:
+      fl-server:
+        condition: service_healthy
+    restart: on-failure
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 700M
+        reservations:
+          cpus: '0.25'
+          memory: 400M
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "5m"
+        max-file: "2"
+
+# ===========================================================================
+# NETWORK DEFINITION
+# ===========================================================================
+networks:
+  fl-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
+
+# ===========================================================================
+# COMMAND REFERENCE:
+# ===========================================================================
+# BUILD:
+#   docker compose build
+#
+# START (all services):
+#   docker compose up -d
+#
+# STOP (all services):
+#   docker compose down
+#
+# VIEW LOGS:
+#   docker compose logs -f fl-server
+#   docker compose logs -f fl-client-0
+#   docker compose logs -f  # all services
+#
+# CHECK MEMORY USAGE:
+#   docker stats
+#
+# REBUILD & UP:
+#   docker compose up -d --build
+#
+# REMOVE ALL VOLUMES:
+#   docker compose down -v
+#
+# ===========================================================================
