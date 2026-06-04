@@ -1,0 +1,366 @@
+Date,City,Temperature_C,Humidity_%,Wind_Speed_km_h,Precipitation_mm,Condition
+2025-01-01,Toronto,35.4,62,11.1,15.56,Sunny
+2025-01-02,Toronto,36.9,47,29.7,13.94,Cloudy
+2025-01-03,Toronto,14.1,56,12.4,3.43,Foggy
+2025-01-04,Toronto,7.2,58,11.5,0.0,Stormy
+2025-01-05,Toronto,10.3,86,28.3,0.0,Foggy
+2025-01-06,Toronto,37.9,88,0.3,9.98,Sunny
+2025-01-07,Toronto,23.6,67,35.8,0.0,Partly Cloudy
+2025-01-08,Toronto,18.3,45,29.2,1.47,Partly Cloudy
+2025-01-09,Toronto,8.4,41,20.8,9.2,Windy
+2025-01-10,Toronto,20.8,74,21.3,4.39,Rainy
+2025-01-11,Toronto,29.7,52,7.9,1.11,Foggy
+2025-01-12,Toronto,18.3,81,18.7,16.41,Windy
+2025-01-13,Toronto,41.1,84,4.5,8.63,Foggy
+2025-01-14,Toronto,26.5,43,31.7,0.0,Partly Cloudy
+2025-01-15,Toronto,30.4,55,27.4,1.89,Stormy
+2025-01-16,Toronto,39.7,82,24.5,0.38,Sunny
+2025-01-17,Toronto,32.6,38,14.0,0.0,Rainy
+2025-01-18,Toronto,40.0,24,0.9,7.09,Cloudy
+2025-01-19,Toronto,26.5,54,12.1,0.0,Rainy
+2025-01-20,Toronto,5.1,95,4.6,4.44,Windy
+2025-01-21,Toronto,25.9,37,28.1,9.65,Rainy
+2025-01-22,Toronto,40.5,51,5.3,4.21,Rainy
+2025-01-23,Toronto,42.5,73,16.1,0.0,Foggy
+2025-01-24,Toronto,40.6,33,12.9,0.0,Stormy
+2025-01-25,Toronto,28.6,56,29.8,0.0,Partly Cloudy
+2025-01-26,Toronto,12.1,69,24.5,0.0,Sunny
+2025-01-27,Toronto,28.6,28,31.0,0.0,Partly Cloudy
+2025-01-28,Toronto,22.3,63,35.8,0.0,Rainy
+2025-01-29,Toronto,28.9,42,26.0,1.37,Partly Cloudy
+2025-01-30,Toronto,39.6,60,28.2,0.0,Stormy
+2025-01-31,Toronto,38.2,24,23.6,2.06,Sunny
+2025-02-01,Toronto,35.1,89,31.4,2.88,Partly Cloudy
+2025-02-02,Toronto,14.2,31,35.8,0.0,Stormy
+2025-02-03,Toronto,39.1,45,35.3,7.08,Cloudy
+2025-02-04,Toronto,33.6,29,34.4,0.0,Sunny
+2025-02-05,Toronto,18.4,22,3.7,3.76,Sunny
+2025-02-06,Toronto,43.7,75,7.7,2.7,Partly Cloudy
+2025-02-07,Toronto,25.3,62,1.7,3.69,Windy
+2025-02-08,Toronto,7.8,21,6.7,3.65,Rainy
+2025-02-09,Toronto,26.9,73,31.7,1.31,Sunny
+2025-02-10,Toronto,34.9,43,27.9,3.23,Cloudy
+2025-02-11,Toronto,28.0,68,5.9,6.19,Partly Cloudy
+2025-02-12,Toronto,29.8,67,9.0,2.22,Sunny
+2025-02-13,Toronto,19.9,48,28.0,9.85,Partly Cloudy
+2025-02-14,Toronto,19.1,41,24.0,1.07,Rainy
+2025-02-15,Toronto,11.5,42,1.8,9.62,Cloudy
+2025-02-16,Toronto,35.3,87,34.5,13.65,Stormy
+2025-02-17,Toronto,21.3,50,21.7,8.18,Foggy
+2025-02-18,Toronto,11.3,91,38.0,0.18,Partly Cloudy
+2025-02-19,Toronto,20.9,87,26.0,0.68,Windy
+2025-02-20,Toronto,13.9,66,13.7,0.0,Foggy
+2025-02-21,Toronto,32.5,29,10.5,0.0,Foggy
+2025-02-22,Toronto,12.3,90,5.1,0.0,Partly Cloudy
+2025-02-23,Toronto,10.2,32,14.5,4.4,Rainy
+2025-02-24,Toronto,26.2,45,23.5,0.0,Foggy
+2025-02-25,Toronto,13.9,63,35.4,0.0,Rainy
+2025-02-26,Toronto,36.7,47,10.3,4.36,Partly Cloudy
+2025-02-27,Toronto,16.4,80,3.9,2.31,Cloudy
+2025-02-28,Toronto,19.9,86,19.3,6.25,Foggy
+2025-03-01,Toronto,36.0,41,26.1,0.06,Rainy
+2025-03-02,Toronto,44.9,45,3.7,3.11,Stormy
+2025-03-03,Toronto,9.7,73,35.0,3.93,Windy
+2025-03-04,Toronto,5.5,26,38.7,1.01,Cloudy
+2025-03-05,Toronto,12.8,72,24.1,4.36,Cloudy
+2025-03-06,Toronto,40.6,27,30.8,8.37,Stormy
+2025-03-07,Toronto,25.5,44,12.9,10.63,Partly Cloudy
+2025-03-08,Toronto,14.4,86,13.6,5.93,Stormy
+2025-03-09,Toronto,34.8,63,17.1,4.86,Foggy
+2025-03-10,Toronto,35.4,87,37.1,0.0,Cloudy
+2025-03-11,Toronto,44.9,74,36.0,7.32,Windy
+2025-03-12,Toronto,13.4,82,31.4,0.0,Rainy
+2025-03-13,Toronto,23.3,58,7.3,9.42,Rainy
+2025-03-14,Toronto,43.8,32,26.7,7.72,Partly Cloudy
+2025-03-15,Toronto,21.9,55,37.6,3.13,Partly Cloudy
+2025-03-16,Toronto,15.8,77,17.7,14.44,Foggy
+2025-03-17,Toronto,32.1,39,13.0,0.68,Partly Cloudy
+2025-03-18,Toronto,5.4,48,29.7,7.7,Foggy
+2025-03-19,Toronto,26.3,29,13.6,0.0,Cloudy
+2025-03-20,Toronto,34.1,37,7.4,0.0,Stormy
+2025-03-21,Toronto,17.3,20,31.1,3.28,Windy
+2025-03-22,Toronto,12.9,92,30.0,0.0,Partly Cloudy
+2025-03-23,Toronto,9.5,32,7.9,7.47,Cloudy
+2025-03-24,Toronto,34.3,39,12.8,0.0,Rainy
+2025-03-25,Toronto,41.4,24,24.3,3.26,Foggy
+2025-03-26,Toronto,40.6,46,11.1,3.65,Sunny
+2025-03-27,Toronto,18.9,41,23.7,0.0,Rainy
+2025-03-28,Toronto,27.2,26,2.4,0.0,Stormy
+2025-03-29,Toronto,24.8,89,1.6,0.0,Stormy
+2025-03-30,Toronto,8.4,53,29.3,7.88,Rainy
+2025-03-31,Toronto,41.1,46,1.9,0.0,Foggy
+2025-04-01,Toronto,36.8,55,35.6,2.37,Partly Cloudy
+2025-04-02,Toronto,37.1,64,27.4,2.46,Foggy
+2025-04-03,Toronto,27.4,22,5.2,1.05,Windy
+2025-04-04,Toronto,40.5,30,38.6,0.0,Stormy
+2025-04-05,Toronto,34.3,54,17.6,5.24,Sunny
+2025-04-06,Toronto,25.8,60,37.3,1.95,Foggy
+2025-04-07,Toronto,41.6,50,28.0,9.2,Foggy
+2025-04-08,Toronto,37.8,50,4.2,1.37,Rainy
+2025-04-09,Toronto,27.0,37,19.9,0.0,Foggy
+2025-04-10,Toronto,11.5,88,37.7,0.23,Sunny
+2025-04-11,Toronto,23.1,32,11.9,4.6,Sunny
+2025-04-12,Toronto,25.5,40,2.8,0.0,Cloudy
+2025-04-13,Toronto,37.5,79,33.9,8.52,Rainy
+2025-04-14,Toronto,37.3,34,37.0,1.68,Stormy
+2025-04-15,Toronto,32.8,69,39.2,8.58,Stormy
+2025-04-16,Toronto,44.4,62,20.1,4.08,Stormy
+2025-04-17,Toronto,27.1,24,12.8,1.55,Cloudy
+2025-04-18,Toronto,14.6,49,19.5,3.9,Windy
+2025-04-19,Toronto,42.4,50,0.1,3.61,Sunny
+2025-04-20,Toronto,11.4,41,14.6,3.48,Windy
+2025-04-21,Toronto,44.5,86,39.1,4.47,Foggy
+2025-04-22,Toronto,35.8,69,3.1,0.0,Cloudy
+2025-04-23,Toronto,38.1,72,9.5,12.13,Windy
+2025-04-24,Toronto,25.2,22,35.2,8.3,Rainy
+2025-04-25,Toronto,14.6,62,39.2,0.0,Stormy
+2025-04-26,Toronto,18.6,53,9.1,0.67,Windy
+2025-04-27,Toronto,34.3,75,2.2,0.0,Partly Cloudy
+2025-04-28,Toronto,14.5,63,29.8,0.0,Partly Cloudy
+2025-04-29,Toronto,42.1,84,24.3,5.3,Rainy
+2025-04-30,Toronto,44.5,76,28.0,5.58,Foggy
+2025-05-01,Toronto,25.0,63,38.3,0.0,Cloudy
+2025-05-02,Toronto,35.0,73,27.5,7.45,Partly Cloudy
+2025-05-03,Toronto,21.7,50,26.7,8.6,Sunny
+2025-05-04,Toronto,14.3,39,26.5,2.02,Rainy
+2025-05-05,Toronto,11.1,56,34.5,0.0,Rainy
+2025-05-06,Toronto,20.1,63,9.7,0.0,Sunny
+2025-05-07,Toronto,37.6,69,34.9,0.51,Rainy
+2025-05-08,Toronto,33.0,86,8.0,0.0,Rainy
+2025-05-09,Toronto,33.4,32,2.9,0.0,Partly Cloudy
+2025-05-10,Toronto,25.6,48,16.5,0.0,Foggy
+2025-05-11,Toronto,44.4,23,22.5,2.56,Stormy
+2025-05-12,Toronto,8.3,37,33.1,0.0,Windy
+2025-05-13,Toronto,17.6,44,12.2,1.23,Windy
+2025-05-14,Toronto,38.6,82,13.4,0.0,Partly Cloudy
+2025-05-15,Toronto,32.5,86,39.4,4.69,Stormy
+2025-05-16,Toronto,28.4,30,15.8,8.79,Foggy
+2025-05-17,Toronto,24.0,43,18.4,4.78,Stormy
+2025-05-18,Toronto,6.3,67,16.3,0.0,Foggy
+2025-05-19,Toronto,23.3,23,40.0,0.0,Rainy
+2025-05-20,Toronto,33.7,77,7.1,3.35,Partly Cloudy
+2025-05-21,Toronto,5.5,21,24.1,0.0,Foggy
+2025-05-22,Toronto,44.1,48,13.7,2.97,Stormy
+2025-05-23,Toronto,44.3,76,5.7,0.0,Sunny
+2025-05-24,Toronto,8.5,47,31.0,8.73,Stormy
+2025-05-25,Toronto,41.1,28,35.3,1.74,Sunny
+2025-05-26,Toronto,18.4,30,10.9,0.23,Cloudy
+2025-05-27,Toronto,32.2,92,35.2,2.53,Stormy
+2025-05-28,Toronto,23.2,95,20.2,9.37,Rainy
+2025-05-29,Toronto,19.5,59,40.0,10.29,Stormy
+2025-05-30,Toronto,28.3,82,14.9,5.51,Windy
+2025-05-31,Toronto,12.9,60,33.0,4.69,Windy
+2025-06-01,Toronto,22.1,30,29.3,0.0,Foggy
+2025-06-02,Toronto,43.9,25,31.1,0.04,Windy
+2025-06-03,Toronto,12.5,51,37.7,0.9,Sunny
+2025-06-04,Toronto,23.4,45,19.9,0.0,Rainy
+2025-06-05,Toronto,27.9,82,12.9,9.39,Stormy
+2025-06-06,Toronto,5.7,79,23.9,7.44,Cloudy
+2025-06-07,Toronto,21.5,91,14.4,0.0,Foggy
+2025-06-08,Toronto,37.2,90,6.1,1.21,Cloudy
+2025-06-09,Toronto,22.2,34,19.9,7.49,Rainy
+2025-06-10,Toronto,27.9,95,5.7,0.0,Stormy
+2025-06-11,Toronto,39.0,68,33.2,6.55,Windy
+2025-06-12,Toronto,5.7,53,34.8,0.0,Foggy
+2025-06-13,Toronto,28.4,54,11.4,0.0,Windy
+2025-06-14,Toronto,27.7,85,20.3,0.0,Windy
+2025-06-15,Toronto,27.9,67,23.7,4.5,Windy
+2025-06-16,Toronto,31.8,92,37.4,1.12,Stormy
+2025-06-17,Toronto,29.1,66,37.0,8.27,Foggy
+2025-06-18,Toronto,38.2,80,25.4,0.0,Rainy
+2025-06-19,Toronto,42.5,36,20.5,2.91,Sunny
+2025-06-20,Toronto,24.1,57,15.4,4.37,Sunny
+2025-06-21,Toronto,28.4,87,3.9,1.64,Stormy
+2025-06-22,Toronto,42.9,92,27.3,0.0,Foggy
+2025-06-23,Toronto,7.7,93,21.1,0.0,Rainy
+2025-06-24,Toronto,33.0,92,19.6,4.03,Rainy
+2025-06-25,Toronto,13.2,83,13.4,0.0,Rainy
+2025-06-26,Toronto,17.8,71,28.6,0.0,Rainy
+2025-06-27,Toronto,22.7,58,32.2,4.37,Rainy
+2025-06-28,Toronto,43.7,63,4.1,2.32,Foggy
+2025-06-29,Toronto,16.2,78,15.7,0.0,Partly Cloudy
+2025-06-30,Toronto,39.3,35,19.1,1.19,Partly Cloudy
+2025-07-01,Toronto,13.8,65,25.6,3.7,Cloudy
+2025-07-02,Toronto,27.5,93,11.6,8.78,Partly Cloudy
+2025-07-03,Toronto,37.8,77,19.2,0.0,Sunny
+2025-07-04,Toronto,25.4,56,1.8,0.32,Foggy
+2025-07-05,Toronto,38.7,74,31.1,8.77,Sunny
+2025-07-06,Toronto,44.8,34,2.4,1.55,Stormy
+2025-07-07,Toronto,14.6,33,18.9,0.0,Foggy
+2025-07-08,Toronto,44.9,90,20.1,0.88,Windy
+2025-07-09,Toronto,26.8,79,4.9,0.0,Windy
+2025-07-10,Toronto,35.6,39,5.6,2.01,Stormy
+2025-07-11,Toronto,10.3,20,38.7,0.63,Stormy
+2025-07-12,Toronto,15.3,26,13.0,9.5,Partly Cloudy
+2025-07-13,Toronto,20.7,82,17.4,4.18,Partly Cloudy
+2025-07-14,Toronto,42.3,27,25.9,10.57,Rainy
+2025-07-15,Toronto,6.2,68,36.3,0.0,Foggy
+2025-07-16,Toronto,26.1,89,19.3,0.0,Windy
+2025-07-17,Toronto,23.9,44,20.9,0.55,Foggy
+2025-07-18,Toronto,16.2,46,32.0,1.51,Foggy
+2025-07-19,Toronto,14.0,31,30.7,4.35,Sunny
+2025-07-20,Toronto,8.0,22,3.3,1.02,Sunny
+2025-07-21,Toronto,8.2,21,12.0,7.24,Windy
+2025-07-22,Toronto,45.0,87,23.5,0.0,Stormy
+2025-07-23,Toronto,9.8,34,5.1,4.99,Windy
+2025-07-24,Toronto,28.1,31,35.4,7.51,Stormy
+2025-07-25,Toronto,14.7,72,34.3,1.18,Foggy
+2025-07-26,Toronto,26.0,48,4.3,3.43,Stormy
+2025-07-27,Toronto,21.3,21,2.2,4.0,Partly Cloudy
+2025-07-28,Toronto,44.9,54,1.0,5.7,Stormy
+2025-07-29,Toronto,36.2,39,2.7,8.18,Rainy
+2025-07-30,Toronto,13.9,47,13.1,0.0,Windy
+2025-07-31,Toronto,26.4,20,9.7,6.85,Partly Cloudy
+2025-08-01,Toronto,42.2,55,8.2,0.0,Partly Cloudy
+2025-08-02,Toronto,16.4,85,18.9,4.16,Foggy
+2025-08-03,Toronto,39.2,38,34.2,0.68,Partly Cloudy
+2025-08-04,Toronto,19.3,48,11.6,9.88,Foggy
+2025-08-05,Toronto,43.2,26,18.3,0.0,Stormy
+2025-08-06,Toronto,31.1,90,6.8,2.55,Windy
+2025-08-07,Toronto,44.8,50,18.5,1.6,Rainy
+2025-08-08,Toronto,36.0,94,30.7,1.31,Cloudy
+2025-08-09,Toronto,29.3,82,28.1,0.0,Partly Cloudy
+2025-08-10,Toronto,8.1,51,18.8,5.57,Partly Cloudy
+2025-08-11,Toronto,6.6,46,8.6,0.0,Foggy
+2025-08-12,Toronto,10.3,22,27.4,0.0,Cloudy
+2025-08-13,Toronto,21.7,85,15.1,5.26,Foggy
+2025-08-14,Toronto,43.9,89,0.7,4.59,Partly Cloudy
+2025-08-15,Toronto,38.9,53,31.8,2.74,Cloudy
+2025-08-16,Toronto,20.7,47,8.1,14.06,Foggy
+2025-08-17,Toronto,11.0,41,22.4,2.95,Partly Cloudy
+2025-08-18,Toronto,22.6,60,31.3,0.0,Windy
+2025-08-19,Toronto,34.4,53,28.8,2.68,Partly Cloudy
+2025-08-20,Toronto,34.1,76,18.8,0.0,Partly Cloudy
+2025-08-21,Toronto,15.7,43,32.4,4.13,Cloudy
+2025-08-22,Toronto,9.0,62,21.9,0.0,Rainy
+2025-08-23,Toronto,27.7,88,11.8,7.31,Rainy
+2025-08-24,Toronto,36.4,85,20.7,7.74,Foggy
+2025-08-25,Toronto,25.5,34,8.8,5.65,Windy
+2025-08-26,Toronto,14.2,23,17.8,0.0,Rainy
+2025-08-27,Toronto,8.2,85,14.4,0.03,Foggy
+2025-08-28,Toronto,31.9,81,13.6,6.61,Foggy
+2025-08-29,Toronto,29.0,66,16.1,0.0,Foggy
+2025-08-30,Toronto,27.0,78,15.2,0.0,Foggy
+2025-08-31,Toronto,16.5,51,31.7,19.05,Rainy
+2025-09-01,Toronto,41.8,27,16.9,4.44,Foggy
+2025-09-02,Toronto,35.1,25,35.5,0.27,Foggy
+2025-09-03,Toronto,23.2,34,26.0,6.52,Rainy
+2025-09-04,Toronto,17.5,22,17.6,0.0,Partly Cloudy
+2025-09-05,Toronto,9.4,45,18.8,7.54,Cloudy
+2025-09-06,Toronto,29.8,51,7.2,0.0,Stormy
+2025-09-07,Toronto,39.4,79,23.0,0.0,Stormy
+2025-09-08,Toronto,6.1,79,36.5,16.17,Stormy
+2025-09-09,Toronto,23.2,59,39.3,13.33,Rainy
+2025-09-10,Toronto,11.3,67,37.0,5.25,Foggy
+2025-09-11,Toronto,26.8,24,13.0,2.39,Partly Cloudy
+2025-09-12,Toronto,31.2,94,33.2,3.41,Partly Cloudy
+2025-09-13,Toronto,5.4,60,16.6,10.11,Rainy
+2025-09-14,Toronto,33.4,75,30.2,0.0,Cloudy
+2025-09-15,Toronto,29.0,22,38.2,1.11,Windy
+2025-09-16,Toronto,7.3,28,9.9,0.0,Stormy
+2025-09-17,Toronto,28.7,85,27.3,4.52,Windy
+2025-09-18,Toronto,5.4,48,18.0,0.34,Stormy
+2025-09-19,Toronto,21.8,78,34.1,4.23,Stormy
+2025-09-20,Toronto,34.7,62,35.0,5.79,Stormy
+2025-09-21,Toronto,33.2,59,7.9,7.18,Stormy
+2025-09-22,Toronto,35.1,88,27.2,4.02,Windy
+2025-09-23,Toronto,33.8,65,31.2,4.98,Partly Cloudy
+2025-09-24,Toronto,9.4,87,37.5,4.54,Stormy
+2025-09-25,Toronto,33.3,55,14.1,0.0,Partly Cloudy
+2025-09-26,Toronto,39.0,41,8.0,1.42,Rainy
+2025-09-27,Toronto,25.0,24,31.1,6.29,Stormy
+2025-09-28,Toronto,15.3,55,16.6,2.04,Sunny
+2025-09-29,Toronto,6.9,28,7.1,3.07,Sunny
+2025-09-30,Toronto,13.5,87,2.4,1.9,Cloudy
+2025-10-01,Toronto,10.5,35,11.1,7.29,Foggy
+2025-10-02,Toronto,21.7,38,8.8,6.43,Sunny
+2025-10-03,Toronto,18.7,56,23.8,13.7,Stormy
+2025-10-04,Toronto,43.9,40,8.1,0.8,Windy
+2025-10-05,Toronto,38.7,57,23.6,15.9,Rainy
+2025-10-06,Toronto,29.4,71,24.8,3.61,Foggy
+2025-10-07,Toronto,35.4,64,35.4,3.64,Windy
+2025-10-08,Toronto,28.1,93,4.2,0.0,Partly Cloudy
+2025-10-09,Toronto,23.6,74,36.8,4.78,Rainy
+2025-10-10,Toronto,21.0,33,35.3,0.0,Windy
+2025-10-11,Toronto,22.6,39,36.1,6.16,Windy
+2025-10-12,Toronto,29.4,23,28.3,0.0,Stormy
+2025-10-13,Toronto,10.0,77,36.4,0.0,Windy
+2025-10-14,Toronto,10.6,21,29.1,0.0,Cloudy
+2025-10-15,Toronto,39.7,26,38.6,10.48,Foggy
+2025-10-16,Toronto,31.2,71,33.6,0.0,Cloudy
+2025-10-17,Toronto,38.2,88,22.6,0.0,Cloudy
+2025-10-18,Toronto,27.0,45,16.0,0.0,Sunny
+2025-10-19,Toronto,39.8,70,25.1,1.98,Sunny
+2025-10-20,Toronto,35.9,46,38.7,0.0,Stormy
+2025-10-21,Toronto,39.3,93,25.3,0.0,Rainy
+2025-10-22,Toronto,6.7,91,32.8,3.74,Rainy
+2025-10-23,Toronto,10.4,89,9.8,3.58,Sunny
+2025-10-24,Toronto,25.7,48,3.6,0.0,Partly Cloudy
+2025-10-25,Toronto,42.6,88,25.6,0.0,Stormy
+2025-10-26,Toronto,27.3,68,36.6,8.76,Stormy
+2025-10-27,Toronto,32.3,83,25.9,2.97,Windy
+2025-10-28,Toronto,23.6,90,1.8,5.25,Sunny
+2025-10-29,Toronto,22.6,57,33.3,0.96,Cloudy
+2025-10-30,Toronto,27.2,37,21.0,1.69,Windy
+2025-10-31,Toronto,8.2,69,0.9,3.04,Foggy
+2025-11-01,Toronto,41.4,78,30.8,0.73,Sunny
+2025-11-02,Toronto,30.7,63,1.9,2.75,Rainy
+2025-11-03,Toronto,20.9,41,16.9,0.0,Windy
+2025-11-04,Toronto,36.2,93,4.4,4.91,Rainy
+2025-11-05,Toronto,21.5,65,26.6,3.21,Rainy
+2025-11-06,Toronto,30.2,41,34.3,8.99,Foggy
+2025-11-07,Toronto,22.6,81,35.7,5.49,Foggy
+2025-11-08,Toronto,32.9,53,24.5,12.26,Rainy
+2025-11-09,Toronto,30.1,55,15.4,0.0,Stormy
+2025-11-10,Toronto,10.7,81,18.5,3.01,Windy
+2025-11-11,Toronto,36.0,54,14.3,0.0,Sunny
+2025-11-12,Toronto,17.0,81,5.8,4.13,Windy
+2025-11-13,Toronto,9.7,72,37.4,3.64,Foggy
+2025-11-14,Toronto,22.9,23,26.8,2.81,Stormy
+2025-11-15,Toronto,34.2,95,18.1,3.55,Stormy
+2025-11-16,Toronto,17.2,66,9.5,3.93,Stormy
+2025-11-17,Toronto,23.1,74,14.4,1.3,Partly Cloudy
+2025-11-18,Toronto,32.7,81,29.9,0.0,Cloudy
+2025-11-19,Toronto,17.9,48,26.7,5.01,Partly Cloudy
+2025-11-20,Toronto,18.2,79,35.0,1.7,Cloudy
+2025-11-21,Toronto,38.9,80,26.7,4.01,Rainy
+2025-11-22,Toronto,38.7,51,39.8,0.03,Rainy
+2025-11-23,Toronto,11.5,90,25.9,7.8,Cloudy
+2025-11-24,Toronto,8.9,88,21.7,6.25,Foggy
+2025-11-25,Toronto,6.5,37,18.0,1.52,Cloudy
+2025-11-26,Toronto,32.2,59,1.5,0.54,Windy
+2025-11-27,Toronto,24.3,29,4.1,0.0,Foggy
+2025-11-28,Toronto,35.4,57,28.4,0.0,Rainy
+2025-11-29,Toronto,38.9,26,3.7,1.07,Cloudy
+2025-11-30,Toronto,13.6,61,33.2,6.38,Rainy
+2025-12-01,Toronto,34.0,33,14.2,0.0,Sunny
+2025-12-02,Toronto,39.4,45,26.3,7.14,Partly Cloudy
+2025-12-03,Toronto,38.4,84,34.6,0.0,Stormy
+2025-12-04,Toronto,11.9,67,23.0,0.0,Sunny
+2025-12-05,Toronto,19.2,48,10.8,3.0,Sunny
+2025-12-06,Toronto,40.3,84,32.3,5.05,Windy
+2025-12-07,Toronto,22.8,22,21.9,6.03,Rainy
+2025-12-08,Toronto,33.4,49,5.4,1.08,Foggy
+2025-12-09,Toronto,40.4,50,4.6,1.73,Stormy
+2025-12-10,Toronto,23.7,39,1.0,0.0,Foggy
+2025-12-11,Toronto,43.3,77,33.8,0.21,Partly Cloudy
+2025-12-12,Toronto,13.2,89,13.6,0.0,Rainy
+2025-12-13,Toronto,14.5,52,14.2,0.0,Cloudy
+2025-12-14,Toronto,35.2,63,21.1,0.0,Foggy
+2025-12-15,Toronto,39.0,63,11.8,0.0,Foggy
+2025-12-16,Toronto,17.7,82,5.6,2.29,Windy
+2025-12-17,Toronto,24.8,28,24.0,0.0,Foggy
+2025-12-18,Toronto,31.6,82,5.9,9.21,Partly Cloudy
+2025-12-19,Toronto,39.6,88,19.2,0.0,Stormy
+2025-12-20,Toronto,38.3,88,31.7,2.58,Stormy
+2025-12-21,Toronto,20.5,27,19.3,9.25,Partly Cloudy
+2025-12-22,Toronto,16.5,29,12.4,0.0,Foggy
+2025-12-23,Toronto,31.9,92,34.2,7.93,Rainy
+2025-12-24,Toronto,7.6,65,24.5,3.05,Sunny
+2025-12-25,Toronto,9.8,89,8.2,12.05,Foggy
+2025-12-26,Toronto,20.9,31,5.1,5.85,Foggy
+2025-12-27,Toronto,23.5,84,18.1,0.0,Partly Cloudy
+2025-12-28,Toronto,30.5,94,18.5,0.0,Stormy
+2025-12-29,Toronto,12.9,58,37.4,0.0,Foggy
+2025-12-30,Toronto,32.9,76,20.8,1.12,Partly Cloudy
+2025-12-31,Toronto,9.1,43,37.4,5.03,Sunny

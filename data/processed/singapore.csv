@@ -1,0 +1,366 @@
+Date,City,Temperature_C,Humidity_%,Wind_Speed_km_h,Precipitation_mm,Condition
+2025-01-01,Singapore,11.9,95,5.4,2.2,Rainy
+2025-01-02,Singapore,17.5,38,35.6,0.24,Rainy
+2025-01-03,Singapore,35.2,70,33.1,1.72,Cloudy
+2025-01-04,Singapore,44.8,66,2.9,6.38,Stormy
+2025-01-05,Singapore,11.3,72,22.3,1.34,Foggy
+2025-01-06,Singapore,15.3,74,16.1,1.71,Partly Cloudy
+2025-01-07,Singapore,25.1,24,9.7,0.0,Stormy
+2025-01-08,Singapore,24.8,94,13.3,4.01,Partly Cloudy
+2025-01-09,Singapore,15.3,44,0.6,0.0,Rainy
+2025-01-10,Singapore,15.6,88,18.1,0.74,Sunny
+2025-01-11,Singapore,31.7,27,26.4,3.2,Stormy
+2025-01-12,Singapore,27.2,65,39.8,12.26,Foggy
+2025-01-13,Singapore,40.0,43,22.2,4.4,Cloudy
+2025-01-14,Singapore,20.0,37,10.6,9.65,Rainy
+2025-01-15,Singapore,19.2,76,10.1,3.48,Partly Cloudy
+2025-01-16,Singapore,30.6,34,4.6,0.0,Rainy
+2025-01-17,Singapore,20.2,67,13.9,0.41,Windy
+2025-01-18,Singapore,37.6,77,23.5,0.0,Rainy
+2025-01-19,Singapore,26.3,89,12.7,3.22,Windy
+2025-01-20,Singapore,22.0,81,5.9,0.0,Windy
+2025-01-21,Singapore,25.6,72,24.5,6.83,Windy
+2025-01-22,Singapore,16.6,33,8.8,0.0,Rainy
+2025-01-23,Singapore,23.3,72,6.0,8.18,Cloudy
+2025-01-24,Singapore,20.0,38,5.6,7.34,Partly Cloudy
+2025-01-25,Singapore,34.0,84,0.6,0.0,Sunny
+2025-01-26,Singapore,8.1,72,12.3,0.0,Stormy
+2025-01-27,Singapore,44.2,95,0.4,0.0,Rainy
+2025-01-28,Singapore,5.2,66,4.5,8.71,Stormy
+2025-01-29,Singapore,35.3,40,6.9,2.16,Stormy
+2025-01-30,Singapore,9.3,74,30.5,0.0,Stormy
+2025-01-31,Singapore,13.3,28,20.3,0.0,Sunny
+2025-02-01,Singapore,29.3,30,27.6,9.94,Stormy
+2025-02-02,Singapore,30.2,66,34.6,6.54,Rainy
+2025-02-03,Singapore,5.8,74,16.9,0.66,Windy
+2025-02-04,Singapore,35.5,35,17.1,0.0,Windy
+2025-02-05,Singapore,5.2,42,14.3,5.92,Windy
+2025-02-06,Singapore,42.9,94,28.9,0.0,Partly Cloudy
+2025-02-07,Singapore,18.2,28,9.1,5.89,Rainy
+2025-02-08,Singapore,33.4,53,4.2,0.0,Rainy
+2025-02-09,Singapore,19.4,58,22.6,7.96,Cloudy
+2025-02-10,Singapore,7.3,36,7.0,6.93,Rainy
+2025-02-11,Singapore,40.2,36,23.9,7.37,Sunny
+2025-02-12,Singapore,35.5,71,22.8,0.0,Windy
+2025-02-13,Singapore,12.3,57,5.8,0.23,Windy
+2025-02-14,Singapore,26.0,28,23.3,0.19,Windy
+2025-02-15,Singapore,37.4,28,24.3,3.95,Cloudy
+2025-02-16,Singapore,21.6,80,15.8,4.44,Stormy
+2025-02-17,Singapore,16.7,56,4.8,0.0,Windy
+2025-02-18,Singapore,21.4,83,36.8,0.0,Windy
+2025-02-19,Singapore,18.0,23,33.9,0.0,Sunny
+2025-02-20,Singapore,39.3,71,36.1,3.9,Partly Cloudy
+2025-02-21,Singapore,7.3,31,25.1,5.38,Cloudy
+2025-02-22,Singapore,40.5,62,10.1,3.89,Foggy
+2025-02-23,Singapore,11.5,61,29.9,0.0,Foggy
+2025-02-24,Singapore,6.3,79,21.0,15.44,Foggy
+2025-02-25,Singapore,16.5,65,5.0,1.09,Partly Cloudy
+2025-02-26,Singapore,36.3,20,3.1,0.1,Cloudy
+2025-02-27,Singapore,43.4,86,2.4,0.0,Stormy
+2025-02-28,Singapore,26.5,47,35.0,13.78,Rainy
+2025-03-01,Singapore,9.2,35,38.2,0.0,Windy
+2025-03-02,Singapore,26.4,31,22.6,5.84,Windy
+2025-03-03,Singapore,6.8,66,18.5,0.0,Sunny
+2025-03-04,Singapore,7.3,22,39.7,0.0,Foggy
+2025-03-05,Singapore,8.4,23,17.8,2.08,Rainy
+2025-03-06,Singapore,12.1,93,1.9,7.17,Windy
+2025-03-07,Singapore,12.5,35,11.3,2.19,Sunny
+2025-03-08,Singapore,26.6,39,30.0,7.76,Partly Cloudy
+2025-03-09,Singapore,19.6,86,26.5,0.0,Foggy
+2025-03-10,Singapore,18.2,54,23.1,0.0,Rainy
+2025-03-11,Singapore,12.5,71,17.1,8.35,Partly Cloudy
+2025-03-12,Singapore,16.4,51,24.8,11.58,Windy
+2025-03-13,Singapore,42.5,40,33.5,0.0,Stormy
+2025-03-14,Singapore,42.6,44,0.3,4.49,Rainy
+2025-03-15,Singapore,15.1,39,22.5,2.44,Windy
+2025-03-16,Singapore,8.4,95,4.6,0.0,Stormy
+2025-03-17,Singapore,17.0,26,26.9,0.0,Rainy
+2025-03-18,Singapore,8.6,66,32.7,10.0,Foggy
+2025-03-19,Singapore,21.5,71,35.6,5.05,Rainy
+2025-03-20,Singapore,40.9,43,7.0,1.71,Sunny
+2025-03-21,Singapore,11.5,56,3.1,0.0,Sunny
+2025-03-22,Singapore,22.1,44,7.9,5.31,Stormy
+2025-03-23,Singapore,25.5,78,16.5,0.0,Cloudy
+2025-03-24,Singapore,6.8,45,34.8,6.42,Stormy
+2025-03-25,Singapore,29.0,44,32.5,0.0,Stormy
+2025-03-26,Singapore,43.2,76,10.1,0.0,Windy
+2025-03-27,Singapore,34.1,61,21.4,2.91,Foggy
+2025-03-28,Singapore,25.1,45,8.8,1.94,Stormy
+2025-03-29,Singapore,43.7,94,26.0,0.0,Rainy
+2025-03-30,Singapore,11.6,70,6.2,6.64,Sunny
+2025-03-31,Singapore,36.6,70,19.1,0.02,Rainy
+2025-04-01,Singapore,19.2,23,3.3,1.76,Cloudy
+2025-04-02,Singapore,38.3,63,26.1,11.67,Rainy
+2025-04-03,Singapore,14.6,50,34.3,0.0,Partly Cloudy
+2025-04-04,Singapore,14.7,33,13.7,5.43,Sunny
+2025-04-05,Singapore,14.0,45,5.8,12.0,Cloudy
+2025-04-06,Singapore,23.8,33,29.9,6.63,Stormy
+2025-04-07,Singapore,31.3,31,10.7,9.66,Sunny
+2025-04-08,Singapore,9.7,64,11.3,3.1,Windy
+2025-04-09,Singapore,10.7,29,36.9,1.47,Windy
+2025-04-10,Singapore,16.6,70,22.3,13.38,Partly Cloudy
+2025-04-11,Singapore,32.9,66,3.7,3.68,Partly Cloudy
+2025-04-12,Singapore,16.6,51,21.8,6.47,Cloudy
+2025-04-13,Singapore,10.8,92,13.7,4.4,Cloudy
+2025-04-14,Singapore,17.7,60,34.0,0.0,Windy
+2025-04-15,Singapore,29.4,41,35.5,0.0,Partly Cloudy
+2025-04-16,Singapore,23.9,76,6.4,5.57,Rainy
+2025-04-17,Singapore,33.4,70,17.2,0.0,Rainy
+2025-04-18,Singapore,44.1,76,24.9,0.45,Windy
+2025-04-19,Singapore,11.4,39,3.9,1.8,Stormy
+2025-04-20,Singapore,11.6,44,3.3,0.0,Cloudy
+2025-04-21,Singapore,17.6,70,35.6,7.71,Foggy
+2025-04-22,Singapore,10.8,35,14.0,4.52,Windy
+2025-04-23,Singapore,11.9,34,24.6,0.0,Cloudy
+2025-04-24,Singapore,31.0,86,28.2,3.08,Stormy
+2025-04-25,Singapore,31.2,89,13.7,0.0,Sunny
+2025-04-26,Singapore,22.1,77,5.1,2.36,Foggy
+2025-04-27,Singapore,8.4,83,39.1,5.4,Rainy
+2025-04-28,Singapore,36.9,87,27.8,2.23,Windy
+2025-04-29,Singapore,30.3,70,29.1,0.0,Cloudy
+2025-04-30,Singapore,34.8,22,6.2,0.0,Sunny
+2025-05-01,Singapore,35.8,22,10.6,0.0,Windy
+2025-05-02,Singapore,27.8,70,17.8,0.53,Sunny
+2025-05-03,Singapore,12.1,88,3.5,1.21,Foggy
+2025-05-04,Singapore,38.5,77,28.3,3.64,Windy
+2025-05-05,Singapore,18.0,94,11.6,4.73,Rainy
+2025-05-06,Singapore,38.2,45,10.7,6.37,Partly Cloudy
+2025-05-07,Singapore,34.0,67,3.8,0.0,Partly Cloudy
+2025-05-08,Singapore,16.9,89,32.4,0.0,Partly Cloudy
+2025-05-09,Singapore,28.8,31,25.6,3.16,Cloudy
+2025-05-10,Singapore,20.4,92,13.5,0.0,Windy
+2025-05-11,Singapore,29.7,32,6.9,0.0,Foggy
+2025-05-12,Singapore,20.0,90,17.1,0.0,Windy
+2025-05-13,Singapore,35.9,50,20.1,0.0,Sunny
+2025-05-14,Singapore,28.0,92,7.2,0.0,Rainy
+2025-05-15,Singapore,13.7,50,33.4,0.0,Foggy
+2025-05-16,Singapore,36.5,54,24.1,0.0,Foggy
+2025-05-17,Singapore,13.4,61,13.6,1.4,Foggy
+2025-05-18,Singapore,30.0,90,37.3,2.3,Rainy
+2025-05-19,Singapore,8.6,34,17.9,13.15,Foggy
+2025-05-20,Singapore,7.3,77,7.2,0.0,Partly Cloudy
+2025-05-21,Singapore,19.1,73,16.9,2.23,Partly Cloudy
+2025-05-22,Singapore,39.2,71,20.9,2.58,Windy
+2025-05-23,Singapore,35.8,86,3.4,8.05,Partly Cloudy
+2025-05-24,Singapore,22.4,34,4.9,0.0,Rainy
+2025-05-25,Singapore,8.0,58,12.8,1.58,Rainy
+2025-05-26,Singapore,34.5,86,32.9,8.16,Stormy
+2025-05-27,Singapore,6.4,74,4.3,5.64,Rainy
+2025-05-28,Singapore,41.2,46,14.9,4.14,Windy
+2025-05-29,Singapore,21.2,94,27.8,0.0,Cloudy
+2025-05-30,Singapore,38.9,84,39.5,0.0,Rainy
+2025-05-31,Singapore,16.4,70,32.2,15.7,Foggy
+2025-06-01,Singapore,41.9,53,17.5,3.7,Stormy
+2025-06-02,Singapore,13.1,68,16.8,4.89,Stormy
+2025-06-03,Singapore,28.7,21,2.7,9.64,Foggy
+2025-06-04,Singapore,13.5,92,19.8,2.35,Rainy
+2025-06-05,Singapore,30.2,81,25.2,8.92,Windy
+2025-06-06,Singapore,41.9,90,27.9,1.94,Foggy
+2025-06-07,Singapore,24.2,67,29.3,8.89,Sunny
+2025-06-08,Singapore,42.4,86,21.1,0.42,Foggy
+2025-06-09,Singapore,40.9,65,17.7,17.2,Foggy
+2025-06-10,Singapore,42.7,45,28.1,0.0,Rainy
+2025-06-11,Singapore,33.0,85,24.7,0.0,Rainy
+2025-06-12,Singapore,15.6,93,12.0,1.31,Partly Cloudy
+2025-06-13,Singapore,21.1,80,25.9,0.92,Stormy
+2025-06-14,Singapore,39.2,62,12.8,2.08,Rainy
+2025-06-15,Singapore,19.3,83,39.4,12.36,Windy
+2025-06-16,Singapore,33.8,39,12.8,2.01,Stormy
+2025-06-17,Singapore,26.2,65,1.3,7.2,Windy
+2025-06-18,Singapore,18.9,79,11.1,2.39,Foggy
+2025-06-19,Singapore,31.5,46,3.2,1.43,Partly Cloudy
+2025-06-20,Singapore,6.2,34,14.1,0.0,Foggy
+2025-06-21,Singapore,43.4,52,29.7,0.0,Partly Cloudy
+2025-06-22,Singapore,32.1,76,15.2,0.0,Sunny
+2025-06-23,Singapore,21.0,89,33.9,0.0,Partly Cloudy
+2025-06-24,Singapore,26.6,64,3.0,0.0,Stormy
+2025-06-25,Singapore,10.3,47,28.7,3.08,Cloudy
+2025-06-26,Singapore,17.5,83,19.8,1.68,Stormy
+2025-06-27,Singapore,22.6,39,3.8,0.0,Cloudy
+2025-06-28,Singapore,17.4,88,22.2,0.0,Sunny
+2025-06-29,Singapore,7.9,39,19.3,2.62,Sunny
+2025-06-30,Singapore,6.4,76,25.3,2.86,Partly Cloudy
+2025-07-01,Singapore,27.4,21,30.7,0.0,Stormy
+2025-07-02,Singapore,19.0,75,24.9,10.96,Cloudy
+2025-07-03,Singapore,16.6,21,30.0,4.12,Cloudy
+2025-07-04,Singapore,42.5,62,1.9,7.07,Sunny
+2025-07-05,Singapore,11.9,72,7.5,0.0,Stormy
+2025-07-06,Singapore,19.5,40,35.7,6.38,Partly Cloudy
+2025-07-07,Singapore,15.2,40,15.0,1.84,Rainy
+2025-07-08,Singapore,14.6,90,23.1,3.92,Foggy
+2025-07-09,Singapore,40.1,85,23.0,0.0,Stormy
+2025-07-10,Singapore,20.8,46,1.0,1.4,Cloudy
+2025-07-11,Singapore,19.8,59,33.8,4.61,Stormy
+2025-07-12,Singapore,26.2,91,22.7,0.0,Rainy
+2025-07-13,Singapore,41.0,56,8.6,2.09,Rainy
+2025-07-14,Singapore,26.4,86,26.0,9.15,Rainy
+2025-07-15,Singapore,18.4,61,29.6,5.92,Cloudy
+2025-07-16,Singapore,43.0,27,11.1,0.0,Sunny
+2025-07-17,Singapore,23.0,43,35.4,0.0,Stormy
+2025-07-18,Singapore,18.4,38,0.5,12.96,Windy
+2025-07-19,Singapore,43.8,67,17.1,3.06,Sunny
+2025-07-20,Singapore,32.0,51,5.2,8.78,Windy
+2025-07-21,Singapore,36.7,95,9.0,5.22,Cloudy
+2025-07-22,Singapore,24.6,61,5.8,3.29,Foggy
+2025-07-23,Singapore,11.2,61,27.2,4.94,Windy
+2025-07-24,Singapore,40.2,91,11.6,5.09,Cloudy
+2025-07-25,Singapore,23.5,74,37.5,0.25,Partly Cloudy
+2025-07-26,Singapore,27.8,40,0.1,6.94,Windy
+2025-07-27,Singapore,11.0,45,23.4,0.0,Partly Cloudy
+2025-07-28,Singapore,37.5,55,34.0,0.0,Partly Cloudy
+2025-07-29,Singapore,45.0,94,6.0,4.75,Partly Cloudy
+2025-07-30,Singapore,25.2,46,1.6,8.73,Windy
+2025-07-31,Singapore,24.7,39,22.3,6.32,Partly Cloudy
+2025-08-01,Singapore,21.0,52,13.4,6.36,Windy
+2025-08-02,Singapore,24.1,28,35.2,7.6,Cloudy
+2025-08-03,Singapore,18.3,74,22.1,0.0,Sunny
+2025-08-04,Singapore,26.6,45,23.8,1.64,Rainy
+2025-08-05,Singapore,6.9,36,23.7,2.44,Stormy
+2025-08-06,Singapore,19.8,46,37.1,5.64,Foggy
+2025-08-07,Singapore,40.1,52,34.2,7.21,Foggy
+2025-08-08,Singapore,9.7,93,12.5,2.4,Cloudy
+2025-08-09,Singapore,12.6,52,2.1,8.09,Cloudy
+2025-08-10,Singapore,15.3,54,22.3,4.14,Windy
+2025-08-11,Singapore,33.8,40,4.2,8.29,Windy
+2025-08-12,Singapore,43.8,45,31.5,0.0,Rainy
+2025-08-13,Singapore,33.2,87,28.5,0.0,Windy
+2025-08-14,Singapore,41.2,78,21.4,1.88,Sunny
+2025-08-15,Singapore,31.6,30,38.2,0.06,Cloudy
+2025-08-16,Singapore,24.2,58,33.0,0.46,Stormy
+2025-08-17,Singapore,26.5,41,5.1,4.86,Rainy
+2025-08-18,Singapore,12.3,90,7.7,0.79,Windy
+2025-08-19,Singapore,36.1,31,14.6,7.77,Partly Cloudy
+2025-08-20,Singapore,24.6,26,6.7,4.09,Stormy
+2025-08-21,Singapore,19.0,45,6.6,6.42,Stormy
+2025-08-22,Singapore,24.5,67,18.0,3.54,Foggy
+2025-08-23,Singapore,21.6,50,37.2,0.0,Foggy
+2025-08-24,Singapore,19.4,87,3.0,2.01,Windy
+2025-08-25,Singapore,21.2,48,10.8,0.0,Stormy
+2025-08-26,Singapore,26.5,77,5.6,7.12,Partly Cloudy
+2025-08-27,Singapore,10.9,26,32.0,0.0,Foggy
+2025-08-28,Singapore,9.6,85,2.4,4.27,Cloudy
+2025-08-29,Singapore,13.6,72,20.9,0.0,Partly Cloudy
+2025-08-30,Singapore,12.2,20,12.4,8.99,Foggy
+2025-08-31,Singapore,26.7,69,25.6,3.38,Foggy
+2025-09-01,Singapore,42.6,82,19.8,0.0,Rainy
+2025-09-02,Singapore,34.2,76,36.3,0.0,Windy
+2025-09-03,Singapore,19.5,35,13.2,5.75,Cloudy
+2025-09-04,Singapore,22.4,41,9.1,0.28,Rainy
+2025-09-05,Singapore,12.1,45,34.7,4.92,Stormy
+2025-09-06,Singapore,22.4,80,12.7,7.52,Rainy
+2025-09-07,Singapore,7.6,67,25.4,0.0,Rainy
+2025-09-08,Singapore,38.2,23,5.0,2.11,Foggy
+2025-09-09,Singapore,44.4,50,7.2,5.02,Rainy
+2025-09-10,Singapore,20.9,38,1.8,5.18,Foggy
+2025-09-11,Singapore,37.9,31,29.2,0.28,Rainy
+2025-09-12,Singapore,36.5,92,7.2,0.0,Foggy
+2025-09-13,Singapore,39.5,37,20.8,4.99,Sunny
+2025-09-14,Singapore,38.5,23,13.6,0.0,Stormy
+2025-09-15,Singapore,17.3,25,26.9,8.91,Rainy
+2025-09-16,Singapore,21.8,84,37.3,2.15,Stormy
+2025-09-17,Singapore,28.7,24,21.6,2.25,Windy
+2025-09-18,Singapore,29.2,63,24.1,0.0,Windy
+2025-09-19,Singapore,14.7,81,21.1,0.0,Sunny
+2025-09-20,Singapore,8.7,45,32.1,0.0,Cloudy
+2025-09-21,Singapore,5.5,30,8.8,0.0,Windy
+2025-09-22,Singapore,31.1,22,30.5,0.74,Cloudy
+2025-09-23,Singapore,5.6,33,3.0,0.0,Rainy
+2025-09-24,Singapore,7.1,80,21.6,2.96,Windy
+2025-09-25,Singapore,36.5,34,8.1,4.05,Foggy
+2025-09-26,Singapore,37.9,79,10.3,2.17,Partly Cloudy
+2025-09-27,Singapore,21.2,62,16.6,9.67,Stormy
+2025-09-28,Singapore,19.2,48,38.2,8.17,Cloudy
+2025-09-29,Singapore,41.3,30,28.9,0.0,Sunny
+2025-09-30,Singapore,15.8,54,19.4,10.54,Rainy
+2025-10-01,Singapore,36.0,26,36.6,9.1,Stormy
+2025-10-02,Singapore,31.9,90,26.9,8.95,Cloudy
+2025-10-03,Singapore,5.0,32,2.6,9.66,Foggy
+2025-10-04,Singapore,8.6,81,18.2,3.86,Windy
+2025-10-05,Singapore,44.3,64,15.2,0.0,Sunny
+2025-10-06,Singapore,13.6,68,29.5,3.32,Cloudy
+2025-10-07,Singapore,16.9,25,27.0,0.39,Sunny
+2025-10-08,Singapore,19.5,84,15.1,0.0,Rainy
+2025-10-09,Singapore,22.5,95,33.4,0.0,Sunny
+2025-10-10,Singapore,20.8,51,3.2,3.47,Windy
+2025-10-11,Singapore,36.8,22,26.6,1.45,Partly Cloudy
+2025-10-12,Singapore,12.8,85,38.0,6.95,Foggy
+2025-10-13,Singapore,27.7,45,27.8,4.67,Cloudy
+2025-10-14,Singapore,12.9,44,36.1,5.36,Cloudy
+2025-10-15,Singapore,9.2,75,23.4,0.0,Windy
+2025-10-16,Singapore,32.8,67,23.3,3.13,Foggy
+2025-10-17,Singapore,26.1,93,1.5,0.89,Stormy
+2025-10-18,Singapore,43.4,52,38.0,0.0,Cloudy
+2025-10-19,Singapore,39.5,92,39.7,0.0,Rainy
+2025-10-20,Singapore,16.3,82,8.8,4.76,Stormy
+2025-10-21,Singapore,41.3,75,32.8,7.64,Windy
+2025-10-22,Singapore,41.8,24,38.5,0.0,Stormy
+2025-10-23,Singapore,35.9,90,8.3,10.32,Partly Cloudy
+2025-10-24,Singapore,22.9,48,38.0,1.08,Partly Cloudy
+2025-10-25,Singapore,18.6,34,34.4,7.14,Sunny
+2025-10-26,Singapore,13.3,73,2.9,1.14,Cloudy
+2025-10-27,Singapore,24.0,34,9.9,0.4,Sunny
+2025-10-28,Singapore,18.8,71,18.3,0.05,Cloudy
+2025-10-29,Singapore,30.7,68,5.6,5.74,Stormy
+2025-10-30,Singapore,31.2,53,33.9,4.04,Cloudy
+2025-10-31,Singapore,42.0,54,27.6,0.0,Foggy
+2025-11-01,Singapore,13.5,71,22.6,6.86,Stormy
+2025-11-02,Singapore,16.4,29,39.2,8.74,Partly Cloudy
+2025-11-03,Singapore,20.2,85,25.8,9.61,Sunny
+2025-11-04,Singapore,6.9,87,26.4,0.0,Rainy
+2025-11-05,Singapore,24.4,48,15.2,0.66,Sunny
+2025-11-06,Singapore,10.8,21,36.8,0.28,Sunny
+2025-11-07,Singapore,18.0,32,18.4,0.0,Rainy
+2025-11-08,Singapore,33.4,68,11.0,5.43,Rainy
+2025-11-09,Singapore,24.9,78,7.1,9.96,Cloudy
+2025-11-10,Singapore,41.3,58,18.4,0.18,Windy
+2025-11-11,Singapore,33.1,68,29.8,14.33,Stormy
+2025-11-12,Singapore,34.1,85,32.2,0.0,Cloudy
+2025-11-13,Singapore,11.7,45,33.7,0.0,Stormy
+2025-11-14,Singapore,10.8,94,23.9,4.98,Sunny
+2025-11-15,Singapore,11.2,95,23.9,0.67,Stormy
+2025-11-16,Singapore,35.5,91,36.2,2.72,Foggy
+2025-11-17,Singapore,41.8,66,1.2,4.62,Cloudy
+2025-11-18,Singapore,30.9,23,7.6,4.64,Rainy
+2025-11-19,Singapore,44.2,94,12.6,3.9,Foggy
+2025-11-20,Singapore,10.9,39,32.6,0.0,Sunny
+2025-11-21,Singapore,7.2,87,3.5,8.74,Sunny
+2025-11-22,Singapore,6.7,27,0.5,4.6,Sunny
+2025-11-23,Singapore,30.3,48,1.7,8.01,Rainy
+2025-11-24,Singapore,17.9,52,26.9,0.0,Partly Cloudy
+2025-11-25,Singapore,27.4,35,20.3,10.51,Foggy
+2025-11-26,Singapore,12.9,51,11.2,5.0,Windy
+2025-11-27,Singapore,17.3,34,35.3,4.97,Rainy
+2025-11-28,Singapore,43.2,84,12.0,4.0,Windy
+2025-11-29,Singapore,36.3,91,31.5,5.13,Stormy
+2025-11-30,Singapore,44.3,21,22.9,0.0,Cloudy
+2025-12-01,Singapore,31.7,81,28.3,0.58,Stormy
+2025-12-02,Singapore,25.4,63,23.5,5.12,Cloudy
+2025-12-03,Singapore,20.3,47,14.3,6.51,Cloudy
+2025-12-04,Singapore,16.0,68,16.0,10.29,Sunny
+2025-12-05,Singapore,43.6,93,33.6,8.42,Stormy
+2025-12-06,Singapore,32.0,71,7.3,3.71,Foggy
+2025-12-07,Singapore,13.4,42,22.0,7.42,Stormy
+2025-12-08,Singapore,41.3,46,39.3,0.0,Sunny
+2025-12-09,Singapore,16.9,79,18.8,0.0,Cloudy
+2025-12-10,Singapore,26.7,26,12.7,5.28,Stormy
+2025-12-11,Singapore,11.3,70,14.7,0.0,Cloudy
+2025-12-12,Singapore,38.3,87,4.3,5.55,Foggy
+2025-12-13,Singapore,25.0,40,31.0,1.15,Foggy
+2025-12-14,Singapore,6.0,92,6.0,5.62,Stormy
+2025-12-15,Singapore,43.8,50,8.5,0.0,Cloudy
+2025-12-16,Singapore,29.6,88,25.2,0.0,Cloudy
+2025-12-17,Singapore,38.9,60,2.8,0.65,Rainy
+2025-12-18,Singapore,19.6,23,6.6,6.91,Stormy
+2025-12-19,Singapore,31.5,59,38.4,2.03,Partly Cloudy
+2025-12-20,Singapore,41.9,91,25.6,7.66,Rainy
+2025-12-21,Singapore,18.4,92,11.5,0.49,Foggy
+2025-12-22,Singapore,44.4,84,4.8,2.55,Partly Cloudy
+2025-12-23,Singapore,7.0,42,22.4,0.0,Partly Cloudy
+2025-12-24,Singapore,32.0,77,31.8,10.28,Sunny
+2025-12-25,Singapore,36.0,67,22.4,0.0,Windy
+2025-12-26,Singapore,11.0,88,0.8,0.0,Rainy
+2025-12-27,Singapore,31.4,75,3.1,0.0,Rainy
+2025-12-28,Singapore,24.6,65,5.9,5.85,Cloudy
+2025-12-29,Singapore,38.3,47,19.0,8.71,Rainy
+2025-12-30,Singapore,30.6,46,16.4,0.07,Stormy
+2025-12-31,Singapore,44.3,75,4.6,0.0,Stormy
