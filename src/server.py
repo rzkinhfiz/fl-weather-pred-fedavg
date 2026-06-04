@@ -79,7 +79,7 @@ class MemoryOptimizedFedAvg(FedAvg):
         min_fit_clients: int = 2,
         min_evaluate_clients: int = 2,
         min_available_clients: int = 2,
-        eval_fn = None,
+        evaluate_fn = None,
         on_fit_config_fn = None,
         on_evaluate_config_fn = None,
         accept_failures: bool = True,
@@ -94,7 +94,7 @@ class MemoryOptimizedFedAvg(FedAvg):
             min_fit_clients=min_fit_clients,
             min_evaluate_clients=min_evaluate_clients,
             min_available_clients=min_available_clients,
-            eval_fn=eval_fn,
+            evaluate_fn=evaluate_fn,
             on_fit_config_fn=on_fit_config_fn,
             on_evaluate_config_fn=on_evaluate_config_fn,
             accept_failures=accept_failures,
@@ -359,9 +359,7 @@ def main():
         server_address=f"{args.host}:{args.port}",
         config=config,
         strategy=strategy,
-        # Force gRPC to use compression (save bandwidth)
-        grpc_max_send_message_length=-1,  # Unlimited (gRPC will handle)
-        grpc_max_receive_message_length=-1,
+        grpc_max_message_length=50_000_000,  # 50 MB per message (safe for 1 GB server)
     )
 
 if __name__ == "__main__":
