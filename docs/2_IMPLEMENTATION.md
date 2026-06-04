@@ -1649,5 +1649,6 @@ def test_client_evaluate():
 
 **End of Implementation Document**
 
-Next: [3_DEPLOYMENT.md] - Installation, environment setup, production deployment  
-Previous: [1_ARCHITECTURE.md] - System architecture and design
+Previous: [1_ARCHITECTURE.md](1_ARCHITECTURE.md) - System architecture and design
+Next: [3_DEPLOYMENT.md](3_DEPLOYMENT.md) - Installation, environment setup, production deployment  
+
