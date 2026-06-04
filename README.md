@@ -15,20 +15,20 @@
 
 ## 📋 Table of Contents
 
-- [Overview](#overview)
-- [Key Features](#key-features)
-- [System Requirements](#system-requirements)
-- [Quick Start](#quick-start)
-- [Installation](#installation)
-- [Deployment Options](#deployment-options)
-- [Usage](#usage)
-- [Project Structure](#project-structure)
-- [Documentation](#documentation)
-- [Architecture](#architecture)
-- [Performance](#performance)
-- [Contributing](#contributing)
-- [License](#license)
-- [Citation](#citation)
+- [Overview](#-overview)
+- [Key Features](#-key-features)
+- [System Requirements](#-system-requirements)
+- [Quick Start](#-quick-start)
+- [Installation](#-installation)
+- [Deployment Options](#-deployment-options)
+- [Usage](#-usage)
+- [Project Structure](#-project-structure)
+- [Documentation](#-documentation)
+- [Architecture](#-architecture)
+- [Performance](#-performance)
+- [Contributing](#-contributing)
+- [License](#-license)
+- [Citation](#-citation)
 
 ---
 
@@ -867,7 +867,7 @@ python3 src/simulation.py
 
 - [Ikhtisar](#ikhtisar)
 - [Fitur Utama](#fitur-utama)
-- [Persyaratan Sistem](#persyaratan-sistem)
+- [Persyaratan Sistem](#persyaratan)
 - [Mulai Cepat](#mulai-cepat)
 - [Instalasi](#instalasi)
 

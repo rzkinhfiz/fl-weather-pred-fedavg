@@ -2,15 +2,15 @@
 
 ## 📋 Isi Kandungan
 
-1. [Gambaran Keseluruhan](#gambaran-keseluruhan)
-2. [Masalah yang Diselesaikan](#masalah-yang-diselesaikan)
-3. [Arsitektur Docker](#arsitektur-docker)
-4. [Struktur Fail](#struktur-fail)
-5. [Petunjuk Pemasangan](#petunjuk-pemasangan)
-6. [Arahan Terminal](#arahan-terminal)
-7. [Monitoring & Troubleshooting](#monitoring--troubleshooting)
-8. [Optimisasi Memory](#optimisasi-memory)
-9. [Deployment GCP](#deployment-gcp)
+1. [Gambaran Keseluruhan](#-gambaran-keseluruhan)
+2. [Masalah yang Diselesaikan](#-masalah-yang-diselesaikan)
+3. [Arsitektur Docker](#-arsitektur-docker)
+4. [Struktur Fail](#-struktur-fail)
+5. [Petunjuk Pemasangan](#-petunjuk-pemasangan)
+6. [Arahan Terminal](#-arahan-terminal)
+7. [Monitoring & Troubleshooting](#m-onitoring--troubleshooting)
+8. [Optimisasi Memory](#-optimisasi-memory)
+9. [Deployment GCP](#️-deployment-gcp)
 10. [Alternative: Kubernetes Deployment](#️-alternative-kubernetes-deployment)
 
 ---
