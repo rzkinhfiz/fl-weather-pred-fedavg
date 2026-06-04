@@ -9,7 +9,7 @@
 
 > **Production-ready federated learning system for multi-city weather forecasting using LSTM neural networks**
 
-**English** | [العربية](#العربية) | [Bahasa Indonesia](#bahasa-indonesia)
+**English** | [한국어](#한국어) | [Bahasa Indonesia](#bahasa-indonesia)
 
 ---
 
@@ -817,34 +817,35 @@ See [5_TROUBLESHOOTING.md](docs/5_TROUBLESHOOTING.md) for 50+ solutions.
 
 ---
 
-# العربية
+# 한국어
 
-## 📋 جدول المحتويات
+## 📋 목차
 
-- [نظرة عامة](#نظرة-عامة)
-- [المتطلبات](#المتطلبات)
-- [البدء السريع](#البدء-السريع)
-- [التثبيت](#التثبيت)
+- [개요](#개요)
+- [주요 기능](#주요-기능)
+- [시스템 요구사항](#시스템-요구사항)
+- [빠른 시작](#빠른-시작)
+- [설치](#설치)
 
-## نظرة عامة
+## 개요
 
-يطبق هذا المشروع نظام **تعلم موزع (Federated Learning)** متقدم لتوقع الطقس متعدد المدن باستخدام **LSTM** و**إطار عمل Flower**.
+이 프로젝트는 **PyTorch LSTM**과 **Flower 프레임워크**를 사용하여 **15개 도시에 걸친 협력적인 날씨 예측**을 위한 **프로덕션급 연합 학습(Federated Learning, FL)** 시스템을 구현합니다.
 
-### مميزات رئيسية
+### 주요 기능
 
-- ✅ تعلم موزع بدون نقل البيانات الخام
-- ✅ تشفير كامل للخصوصية
-- ✅ توفير 91.5% من استهلاك النطاق الترددي
-- ✅ قابل للتوسع إلى 100+ عميل
+- ✅ 원본 데이터 전송 없는 분산 학습
+- ✅ 100% 데이터 개인정보 보호
+- ✅ 네트워크 대역폭 91.5% 절감
+- ✅ 100+ 클라이언트까지 확장 가능
 
-### المتطلبات
+### 시스템 요구사항
 
 - Python 3.10+
 - PyTorch 2.1+
 - Flower 1.8+
-- NVIDIA GPU (اختياري - CPU مدعوم)
+- NVIDIA GPU (선택사항 - CPU 지원됨)
 
-### البدء السريع
+### 빠른 시작
 
 ```bash
 git clone https://github.com/rzkinhfiz/fl-weather-pred-fedavg.git
@@ -855,7 +856,7 @@ pip install -r requirements.txt
 python3 src/simulation.py
 ```
 
-للمزيد من المعلومات، راجع [الوثائق الكاملة](docs/).
+자세한 정보는 [전체 문서](docs/)를 참조하세요.
 
 ---
 
